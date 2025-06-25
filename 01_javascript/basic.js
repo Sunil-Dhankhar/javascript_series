@@ -2,16 +2,16 @@
     name = "";// name is declared as null property
     if(!name) // check name is recived as null...if null then condition is true 
     {
-        var name = "sunil dhankhar"; // initilize new modren variable name store name value / property temparary
-        var city = "jalandhar" // initilize new varible with old var variable city having city value / property temprary
+        var name = "John David"; // initilize new modren variable name store name value / property temparary
+        var city = "New York City" // initilize new varible with old var variable city having city value / property temprary
         console.log(name); //print the variable property with its value
     }
     if(city)
     {
     console.log(city); // print the variable property with its value
-    var city = "ludhiana"; // reassign or reinitilize city ( var ) variable with new value that overwrite its old value if exist
+    var city = "Maxico"; // reassign or reinitilize city ( var ) variable with new value that overwrite its old value if exist
     console.log(city); //print again varible with its value
-    let name = "shrav dhankhar"; // initilize new varible with its value
+    let name = "David Williams"; // initilize new varible with its value
     console.log(name); // print variable with its value that user have provide
     console.log(accountID)
     }
