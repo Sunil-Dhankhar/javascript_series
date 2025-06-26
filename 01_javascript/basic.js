@@ -87,9 +87,23 @@ console.log(p.toString());
 /* Array  */
 
 const cars = ["Saab", "Volvo", "BMW"]; // this is an array of javascript
+const car = ["Ford", "Kia", "Hundai"]; // this is an array of javascript
+console.log(Array.isArray(cars)); // this is check that is that object is an array or not
 console.log(cars);//printing the log of an array
 cars[0] = "Jaguar";//changing the first element of array or change the first value of array
 console.log(cars[0]);// printing the first value of array after change the array value
 console.log(cars); // print the array log or values
 console.log(cars.toString()); // converting an array into a String
 console.log(cars.length); // count how many elements are present in array 
+console.log(cars[cars.length-1]); // this print the last element of the array
+let pt = "<ul>";
+let i = 0;
+cars.forEach(function(){
+    pt += "<li>"+cars[i]+"</li>";
+    i++;
+});
+pt += "</ul>";
+console.log(pt);
+console.log(cars.push("TATA"));// this increment one element into existing array or add 1 new value into the existing array
+console.log(cars);
+console.log(cars.concat(car));//this method concat is used to merge or concatinate to two array ,string, objects etc
