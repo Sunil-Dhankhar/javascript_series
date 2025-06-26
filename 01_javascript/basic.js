@@ -15,16 +15,16 @@
     console.log(name); // print variable with its value that user have provide
     console.log(accountID)
     }
-
+/* comman Arithmatic Operations */
     let x = "100";
     let y = "10";
     let e = 5;
     let d = 45;
 
-let z = x / y;  // Works → 10
-let a = x * y;  // Works → 1000
-let b = x - y;  // Works → 90
-let c = x + y + d + e;  // Not as expected → "10010455"
+    let z = x / y;  // Works → 10
+    let a = x * y;  // Works → 1000
+    let b = x - y;  // Works → 90
+    let c = x + y + d + e;  // Not as expected → "10010455"
 
 
     console.log(z + "  " + a + "  " + b + "  " + c);
@@ -55,3 +55,41 @@ let c = x + y + d + e;  // Not as expected → "10010455"
 
 */ 
 
+
+/* javascript objects  */
+
+/* Notation about objects :- in javascript if we found values in {---} that means this is javascript object. */
+ // we initilizing an object student with keys and its values...
+let student = { name : "Rohanpreet", 
+                class : "BA",
+                rollNo : 123456,
+                institution : "DAV IT Collage"
+};
+
+let t = student;//here we create a mirror of student object that is refrence of student object..with the help of referance variable we make changes into the object values according to the its object keyes outside the object. 
+t.class = "PHD";// here we change the student class value outside the object
+console.log(student["class"]); // this method is used to print the object value like student class; 
+console.log(student["name"]);//this method is used to get specific value of an object
+console.log( student.class);//this method is also used to get specific value of an object .. both method provide same output...written type is different but working is same
+
+/* ---------  Comman operations ------*/
+
+
+let p = 123;
+let g = "'"+p+"'";
+
+console.log(typeof g);
+console.log(g);
+console.log(typeof p.toString());
+console.log(p.toString());
+
+
+/* Array  */
+
+const cars = ["Saab", "Volvo", "BMW"]; // this is an array of javascript
+console.log(cars);//printing the log of an array
+cars[0] = "Jaguar";//changing the first element of array or change the first value of array
+console.log(cars[0]);// printing the first value of array after change the array value
+console.log(cars); // print the array log or values
+console.log(cars.toString()); // converting an array into a String
+console.log(cars.length); // count how many elements are present in array 
