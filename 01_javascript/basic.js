@@ -16,6 +16,18 @@
     console.log(accountID)
     }
 
+    let x = "100";
+    let y = "10";
+    let e = 5;
+    let d = 45;
+
+let z = x / y;  // Works → 10
+let a = x * y;  // Works → 1000
+let b = x - y;  // Works → 90
+let c = x + y + d + e;  // Not as expected → "10010455"
+
+
+    console.log(z + "  " + a + "  " + b + "  " + c);
 
 /*  NOTATION :- Above written in this script we investigate that the var property scope is wide but this is not trustable.. becouse it 
                 Overrite the its old value with new value and create conflict during exicution.. 
@@ -30,6 +42,14 @@
                 in new Block Scope. 
 
                 and one more thing Once const variable declared this cant change....in scope, out the scope it not modified...its special varible type that cant change if declared.
+
+                now we see here that in artihmatic opration every numaric operator behaviour is changed, when it try divison, multipication, subtraction with two string have numaric value,
+                performing numaric  operation very well, but when it try to sum it then the behaviour of method is changed.
+                   thats happened becouse in javascript (+) operator is performing two type of jobs like sum and concatinate,
+                   .1 =>    if it found both values in Numaric then it provide sum of both values.
+                   .2 =>    if it found both values as String then it concatinate the both values like as a one string.
+                   .3 =>    suppose one value is numaric and one value of it have string then it concatinate the both values, not provide the some, 
+                            for sum this required each value is numaric, not a string. 
 
                 Thanks for visit here..
 
