@@ -104,7 +104,7 @@ cars.forEach(function(){
 });
 pt += "</ul>";
 console.log(pt);
-console.log(cars.push("TATA"));// this increment one element into existing array or add 1 new value into the existing array
+console.log(cars.push("TATA"));// this increment one element into existing array or add 1 new value into the existing array into the last of array
 console.log(cars);
 console.log(cars.concat(car));//this method concat is used to merge or concatinate to two array ,string, objects etc
  
@@ -133,12 +133,24 @@ console.log(ca); // printing the whole data of nested array and object as a stri
 
 let allModels = myObj.carss.flatMap(car => car.models);  // this method is used for grab all car models that are placed into nested array into single layer array in short term.
 console.log(allModels);
+console.log(allModels[4]);
 
 let arr = [[1,2],[3,4],[5,6],[7,[8,[9,0]]]];// another nested array
-let pc = arr.flat(Infinity);
+let pc = arr.flat(Infinity);// this method is used to convert a multilevel array into single level array like [1,2,3,4,5,6,7,8,9,0]
 
 console.log(pc); // print the nested array as flat aray and change the all level into defth provide level like [1,2,3,4,5,6,7,8[9,0]],if we provide infinity in place of 2(depth) then output is in single array like [1,2,3,4,5,6,7,8,9,0]
-console.log(pc.flatMap(x => [x, x * 15]));
+console.log(pc.flatMap(x => [x, x * 15])); // here we print an array with performing calculation as per index.. 1, 1*15 = 1,15, => 2, 2*15 = 2,30 and so on.
+const carry = cars.splice(1,0, "Mahindra & Mahindra", "Toyota", "Volkswagon", "Skoda", "Honda");// with this method we add some new array elements to the existing array 
+console.log(cars);//printing the array after added the elements into the array
+
+let rv  = pc.find(function(values){ // find method is used for find specif value from the array
+               if(values > 5) {
+                    //console.log(values) // if we print here then it provide me all values that have greater then 5 that are existing in array
+                    return values; // with this method its return only one value that is existing in array when condition is true.. here conditin is true when after 5, 6 is existing, then it returns the 6
+               }
+});
+console.log(rv); // print in console the return value that found in the array
+
 /* some array method that are
 
         1.  pop() => remove the last element of an Array
@@ -151,7 +163,18 @@ console.log(pc.flatMap(x => [x, x * 15]));
         8.  concat() => this methode is used for merge two or more different -2 array into one called as concatinatation of the array
         9.  flat('depth')=> this method is used for convert the array into single array. multilayer to single layer array
         10. flatMap((1, 1 * 10) => flatmap method is used for doing mapping of array, it works (sometimes) look like a foreach, for-loop, for getting the value of multilayered array
-
+        11. array.splice(2(index number), 1(count of element that want to remove), "elemennts-name") => this method is used to add new elemrnt at specifice location in the array and we also replace and remove some element of the array with this method through defing the path and key
+                                    this effect the original array..
+        12  array.toSpliced(1,2) => this methode works as same splice method, but a major differnce in both is that where splice affected orignal array but the toSpliced method performing
+                                    same splice functionality in new different Array without effected orignal array.
+        13. slice(1,3) => this method is used for slice an array from a specific location without effecting the original array, this create a new array using slice methode with array values from the specific location
+                                    like (slice(1 (starting point),3 (ending point))). 
+        14. indexOf("array value")+1 => this method is used for find the position of array elements from the array from the start side
+        15. lastIndexOf("array value")+1 => this method is also used for find the array element position from the last/end side of array elemrnts
+        16. includes("array element") => this is used to verify or check that this element is existing or not into the array
+        17. find("array values") => with this method we get the value according to our requirement if the element is existing in the array. first you create a call back function in the find function 
+                                    then pass the array values into function here you check that the value is existing or not. if already existing into the array then return the value for print or another operation.
+        18.  
         */
 
 
