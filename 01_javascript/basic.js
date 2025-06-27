@@ -107,3 +107,28 @@ console.log(pt);
 console.log(cars.push("TATA"));// this increment one element into existing array or add 1 new value into the existing array
 console.log(cars);
 console.log(cars.concat(car));//this method concat is used to merge or concatinate to two array ,string, objects etc
+ 
+
+// new example for nested array with objects  
+const myObj = {  // creating new object or initlizing new object
+  name: "John",
+  age: 30,
+  carss: [ //initilizeing new array into the object
+    {name:"Ford", models:["Fiesta", "Focus", "Mustang"]}, //initlizing new objects with arrays into the array called as nested array with objects
+    {name:"BMW", models:["320", "X3", "X5"]},
+    {name:"Fiat", models:["500", "Panda"]}
+  ]
+}
+
+let ca = "";//set an variable as null
+myObj.carss.forEach(function(car){//start a for each loop for get the data from the nested array and object
+    ca += " \n "+ car.name+ " \n ";
+    car.models.forEach(function(model){ // again start a foreach for get data and values from internal array
+        ca += model+ " \n";
+    });
+    ca += " \n ";
+});
+console.log(typeof ca); // getting the type of ca varible 
+console.log(ca); // printing the whole data of nested array and object as a string through this varible that is initlize for store the whole value of nested array.
+
+
