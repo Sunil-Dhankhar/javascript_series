@@ -132,8 +132,8 @@ console.log(typeof ca); // getting the type of ca varible
 console.log(ca); // printing the whole data of nested array and object as a string through this varible that is initlize for store the whole value of nested array.
 
 let allModels = myObj.carss.flatMap(car => car.models);  // this method is used for grab all car models that are placed into nested array into single layer array in short term.
-console.log(allModels);
-console.log(allModels[4]);
+console.log(allModels); //print all models of car array object
+console.log(allModels[4]);//print specific array object element
 
 let arr = [[1,2],[3,4],[5,6],[7,[8,[9,0]]]];// another nested array
 let pc = arr.flat(Infinity);// this method is used to convert a multilevel array into single level array like [1,2,3,4,5,6,7,8,9,0]
@@ -150,13 +150,24 @@ let rv  = pc.find(function(values){ // find method is used for find specif value
                }
 });
 console.log(rv); // print in console the return value that found in the array
-console.log(pc.sort());
-console.log(pc.reverse());
-let bie = [90,19,2,3,4,5,6,87,8,9,18,15];
+console.log(pc.sort()); // this print the array elements in sorting array
+console.log(pc.reverse()); // this print the array elements in reverse mode  like end to start according to reverse indexing
+let bie = [90,19,2,3,4,5,6,87,8,9,18,15]; // initilizing a new array with rendomied elements
+
+function myArrayMin(bies) { // callback function for get a minimum value from the array elements
+  return Math.min.apply(null, bies); // returns back minimum value after find from the array elements
+}
 console.log(bie.sort(function(a,b){return a - b})); // sort as numaric number in ascending order
 console.log(bie.sort(function(a,b){return b - a})); // sort as numaric number in descending order
-console.log(pc.sort(function(){return 0.5 - Math.random()}));
-//console.log(pc.reverse(), pc.sort());
+console.log(pc.sort(function(){return 0.5 - Math.random()})); // thisfunction is used to print the array elements as rendome manner on each function call, every time  different then previous
+console.log(myArrayMin(bie));// this is used to find the minimum value from the array.
+
+/* filteration  */
+let fit = bie.filter(function(vals){ // this is a callback function is used for filter the arrayelemnt and then after filtration return back to the caller
+    return vals > 20; // return the filteration value
+});
+console.log(fit); // print the filteration value after all the function from the array elements.
+
 /* some array method that are
 
         1.  pop() => remove the last element of an Array
@@ -204,6 +215,15 @@ console.log(pc.sort(function(){return 0.5 - Math.random()}));
         28  points.sort(function(){return 0.5 - Math.random()}); // this method is used for set array order as rendom order with new order each time when ever call it. this is not a specific order like asc,desc etc..
         29. min or max value() =>   // get smallest value from array = point[0] && highest value let bt = point.length-1; ,point[bt]; // this provide the highest value from the array list. in ascending order of array
         30. min or max value() =>   // get highest value from array = point[0] && smallest value let bt = point.length-1; ,point[bt]; // this provide the highest value from the array list. in Descending order of array
+        31. math.min.apply(null,array assign name)=> this function is used to find the smallest value from the array, math.min(array) <= x; this is not accespt direct array value , for execution the methode this required apply method.
+        32. sort objects => point.sort(function(a,b){return a.year - b.year}); for ascending order// point.sort(function(a,b){return b.year - a.year}); for descending order (year is belongs to car model)
+        33. array.forEach funnction=> this function is run on each value or element of a specific array till array value not complete.
+        34. array map () => thi function is not affecting the original array. it create a copy or clone of original array and affecting/modifying that clone array according to user requirement
+        35. array flatMap()=> flatmap array method or function is used for mapping the array. with flatmap it first map all elements of array then it create a copy of the original array that we have provide it.
+                                means multilayer / nestied loop ko ek level mein convert karta hai. 
+        36. array filter() => this method is used for filteration array elements accaording to user requirement, this find and filter all data from the array elements.
+
+
         */
 
 
