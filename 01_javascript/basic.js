@@ -150,7 +150,13 @@ let rv  = pc.find(function(values){ // find method is used for find specif value
                }
 });
 console.log(rv); // print in console the return value that found in the array
-
+console.log(pc.sort());
+console.log(pc.reverse());
+let bie = [90,19,2,3,4,5,6,87,8,9,18,15];
+console.log(bie.sort(function(a,b){return a - b})); // sort as numaric number in ascending order
+console.log(bie.sort(function(a,b){return b - a})); // sort as numaric number in descending order
+console.log(pc.sort(function(){return 0.5 - Math.random()}));
+//console.log(pc.reverse(), pc.sort());
 /* some array method that are
 
         1.  pop() => remove the last element of an Array
@@ -173,8 +179,31 @@ console.log(rv); // print in console the return value that found in the array
         15. lastIndexOf("array value")+1 => this method is also used for find the array element position from the last/end side of array elemrnts
         16. includes("array element") => this is used to verify or check that this element is existing or not into the array
         17. find("array values") => with this method we get the value according to our requirement if the element is existing in the array. first you create a call back function in the find function 
-                                    then pass the array values into function here you check that the value is existing or not. if already existing into the array then return the value for print or another operation.
-        18.  
+                                    then pass the array values into function, here you check the required value is existing or not in the array. if already existing into the array then return the value for print or another operation.
+        18. findIndex(array value) => this method is used to find the index of an array value...
+        19. findLast(array value) => This method is used to find a value according to a condition starting from the end of the array. It checks the last element first; if it satisfies the condition, it is returned. Then it moves to the previous one, and so on, until the start, while the condition is not met.
+        20. arrayname.findLastIndex(x => x > 40) => this is alos working like previouse one (find Last method). but here find only index of the value not value from the last of the array.
+        21. sort() => this method is used for sort the elements of an array as ASCENDING in orderas value wise like as index wise like [0,1,2,3,4,5,6,7,8,9,10,11].
+        22. reverse() => this methode is used to print array from ending  to startting..in reverse mode as index wise like from [90,19,2,3,4,5,6,87,8,9,18,15] to => [15,18,9,8,87,6,5,4,3,2,19,90].
+        23. sort() + reverse() = Sort the array elements sort as DESCENDING order from the big number to small number..not metter what the array index of this. just sort as descending order.
+        24. toSorted() => this method is also similar to sort method and also used for sort array elements, but a major differnce between them is that where sort method is alter the original array and sord the original array,
+                            but toSorted method is not affecting the original array and it create the replica of original array and sort that new replica of original...or sort the new array..
+        25 toReversed() => this method is also similar to reverse but not the same where the reverse method is used to reverse order of an original array, but in toReversed method it create the new array of original array,
+                            know as replica of an original array, and then sort this back to front as index wise like [15,18,9,8,87,6,5,4,3,2,19,90].
+                            
+                // **  Note that ** -> sort method is basicalyy sort the string , so  in string if we found "100" and "25" that both are string and sort method sort it ass 100,25 becouse 1 (100) is small then 2 (25)
+                        so result could be wronge. so for numaric  sorting we use function for compare each element of aaray mathematically that which element is small and which one is big..
+        26. point.sort(function(a,b){return a - b});  //this is call numaric sorting order//in which compare 2 values and find one is small and one is big, small is written first called as ascending order.
+        27. point.sort(function(a,b){return b - a});  //this is call numaric sorting order//in which compare 2 values and find one is big and one is small, big is written first called as descending order.
+                
+                // ** Note ** -> When the sort() function compares two values, it sends the values to the compare function, and sorts the values according to the returned (negative, zero, positive) value.
+                             (condition 1)=>    If the result is negative, a is sorted before b.
+                             (condition 2)=>    If the result is positive, b is sorted before a.
+                             (condition 3)=>    If the result is 0, no changes are done with the sort order of the two values.
+        
+        28  points.sort(function(){return 0.5 - Math.random()}); // this method is used for set array order as rendom order with new order each time when ever call it. this is not a specific order like asc,desc etc..
+        29. min or max value() =>   // get smallest value from array = point[0] && highest value let bt = point.length-1; ,point[bt]; // this provide the highest value from the array list. in ascending order of array
+        30. min or max value() =>   // get highest value from array = point[0] && smallest value let bt = point.length-1; ,point[bt]; // this provide the highest value from the array list. in Descending order of array
         */
 
 
