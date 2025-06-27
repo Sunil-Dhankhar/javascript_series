@@ -131,4 +131,28 @@ myObj.carss.forEach(function(car){//start a for each loop for get the data from 
 console.log(typeof ca); // getting the type of ca varible 
 console.log(ca); // printing the whole data of nested array and object as a string through this varible that is initlize for store the whole value of nested array.
 
+let allModels = myObj.carss.flatMap(car => car.models);  // this method is used for grab all car models that are placed into nested array into single layer array in short term.
+console.log(allModels);
+
+let arr = [[1,2],[3,4],[5,6],[7,[8,[9,0]]]];// another nested array
+let pc = arr.flat(Infinity);
+
+console.log(pc); // print the nested array as flat aray and change the all level into defth provide level like [1,2,3,4,5,6,7,8[9,0]],if we provide infinity in place of 2(depth) then output is in single array like [1,2,3,4,5,6,7,8,9,0]
+console.log(pc.flatMap(x => [x, x * 15]));
+/* some array method that are
+
+        1.  pop() => remove the last element of an Array
+        2.  shift() => remove the first element of an Array
+        3.  push() => add new elemt into the existing array
+        4.  join() => join each element of the array with other as String
+        5.  toString => this convert the array as String
+        6.  unshift() => this is used for add new value or element into the array at the bigning
+        7.  delete cars[0] => this is used for delete a perticular element at specific position (**Note** :- this methode leave an undefined hole in array after remove element, you should pop,shift methode in place of delete ) 
+        8.  concat() => this methode is used for merge two or more different -2 array into one called as concatinatation of the array
+        9.  flat('depth')=> this method is used for convert the array into single array. multilayer to single layer array
+        10. flatMap((1, 1 * 10) => flatmap method is used for doing mapping of array, it works (sometimes) look like a foreach, for-loop, for getting the value of multilayered array
+
+        */
+
+
 
