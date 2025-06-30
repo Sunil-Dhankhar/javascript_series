@@ -155,12 +155,14 @@ console.log(pc.reverse()); // this print the array elements in reverse mode  lik
 let bie = [90,19,2,3,4,5,6,87,8,9,18,15]; // initilizing a new array with rendomied elements
 
 function myArrayMin(bies) { // callback function for get a minimum value from the array elements
-  return Math.min.apply(null, bies); // returns back minimum value after find from the array elements
+  let min =  Math.min.apply(null, bies); // returns back minimum value after find from the array elements
+  let max =   Math.max.apply(null, bies); // returns back maximum value after find from the array elements
+  return min + "\n" + max; 
 }
 console.log(bie.sort(function(a,b){return a - b})); // sort as numaric number in ascending order
 console.log(bie.sort(function(a,b){return b - a})); // sort as numaric number in descending order
 console.log(pc.sort(function(){return 0.5 - Math.random()})); // thisfunction is used to print the array elements as rendome manner on each function call, every time  different then previous
-console.log(myArrayMin(bie));// this is used to find the minimum value from the array.
+console.log( myArrayMin(bie));// this is used to find the minimum value from the array.
 
 /* filteration  */
 let fit = bie.filter(function(vals){ // this is a callback function is used for filter the arrayelemnt and then after filtration return back to the caller
@@ -223,13 +225,13 @@ console.log(kies); // print the all elements of the array with its keys as strin
 let update_cars = cars.with(1, "Mahindra and Mahindra"); // Array  With Method is used to update the old array element value with new element value or replace the new array element with old array value.. 
 console.log(cars); // print the original array with elements
 console.log(update_cars);//print the updated version of cloned array from the orignal.
-
+console.log(myArrayMin(bie));
 
 /* some array method that are
 
         1.  pop() => remove the last element of an Array
         2.  shift() => remove the first element of an Array
-        3.  push() => add new element into the existing array
+        3.  push() => add new element into the existing array in to the last of array elements
         4.  join() => join each element of the array with other as String
         5.  toString => this convert the array as String
         6.  unshift() => this is used for add new value or element into the array at the bigning
@@ -249,7 +251,7 @@ console.log(update_cars);//print the updated version of cloned array from the or
         17. find("array values") => with this method we get the value according to our requirement if the element is existing in the array. first you create a call back function in the find function 
                                     then pass the array values into function, here you check the required value is existing or not in the array. if already existing into the array then return the value for print or another operation.
         18. findIndex(array value) => this method is used to find the index of an array value...
-        19. findLast(array value) => This method is used to find a value according to a condition starting from the end of the array. It checks the last element first; if it satisfies the condition, it is returned. Then it moves to the previous one, and so on, until the start, while the condition is not met.
+        19. findLast(array value) => This method is used to find a value according to a condition from the end of the array. It checks the last element first; if it satisfies the condition, it is returned. Then it moves to the previous one, and so on, until the start, while the condition is not met.
         20. arrayname.findLastIndex(x => x > 40) => this is alos working like previouse one (find Last method). but here find only index of the value not value from the last of the array.
         21. sort() => this method is used for sort the elements of an array as ASCENDING in orderas value wise like as index wise like [0,1,2,3,4,5,6,7,8,9,10,11].
         22. reverse() => this methode is used to print array from ending  to startting..in reverse mode as index wise like from [90,19,2,3,4,5,6,87,8,9,18,15] to => [15,18,9,8,87,6,5,4,3,2,19,90].
@@ -270,14 +272,14 @@ console.log(update_cars);//print the updated version of cloned array from the or
                              (condition 3)=>    If the result is 0, no changes are done with the sort order of the two values.
         
         28  points.sort(function(){return 0.5 - Math.random()}); // this method is used for set array order as rendom order with new order each time when ever call it. this is not a specific order like asc,desc etc..
-        29. min or max value() =>   // get smallest value from array = point[0] && highest value let bt = point.length-1; ,point[bt]; // this provide the highest value from the array list. in ascending order of array
-        30. min or max value() =>   // get highest value from array = point[0] && smallest value let bt = point.length-1; ,point[bt]; // this provide the highest value from the array list. in Descending order of array
+        29. min or max value(a-b) =>   // get smallest value from array = point[0] && highest value let bt = point.length-1; ,point[bt]; // this provide the highest value from the array list. in ascending order of array
+        30. min or max value(b-a) =>   // get highest value from array = point[0] && smallest value let bt = point.length-1; ,point[bt]; // this provide the highest value from the array list. in Descending order of array
         31. math.min.apply(null,array assign name)=> this function is used to find the smallest value from the array, math.min(array) <= x; this is not accespt direct array value , for execution the methode this required apply method.
         32. sort objects => point.sort(function(a,b){return a.year - b.year}); for ascending order// point.sort(function(a,b){return b.year - a.year}); for descending order (year is belongs to car model)
         33. array.forEach funnction=> this function is run on each value or element of a specific array till array value not complete.
         34. array map () => this function is not affecting the original array. it create a copy or clone of original array and affecting/modifying that clone array according to user requirement
         35. array flatMap()=> flatmap array method or function is used for mapping the array. with flatmap it first map all elements of array then it create a copy of the original array that we have provide it.
-                                means multilayer / nestied loop ko ek level mein convert karta hai. 
+                                means it converts multilayer / nested array into the single layer or single level array. 
         36. array filter() => this method is used for filteration array elements accaording to user requirement, this find and filter all data from the array elements.
                             Note that the function takes 3 arguments:
                                 The item value
@@ -288,7 +290,7 @@ console.log(update_cars);//print the updated version of cloned array from the or
                             basically reduce methode requires atleast two arguments like one total, value; 
         38. array every() => this function is used to check and verify that each element of array is pass the condition test that is mentioned in the call-back function. if condition is true then it returns result as true in boolean else false
                             from the all elements of array if one conditon is false. then this return false.. this should be require all is perfect. means all elements of array past test and  provide 100% results.
-        39. array some() =>  this function kor method is opposite of every methode.. this methode requires atleast one value or element pass the test, then it should provide result as true else false this not need 100% results.
+        39. array some() =>  this function or method is opposite of every methode.. this methode requires atleast one value or element pass the test, then it should provide result as true else false this not need 100% results.
                              this requires atleast one value who verified or pass the call-back condition. if this pass the test then it move to further operation else this goes to out from the condition or else part.
         40. array from() => this method is permormed when we want to convert the string as array elements and Array.from(//string varible); is fixed keyword for each time when we use this. for example "Hello" => ['H','e','l','l','o'];
                             in javascript we annalize that if we want to perform a power operation on array elements like X^2 means x * 2 * 2, then its wrong method, 
