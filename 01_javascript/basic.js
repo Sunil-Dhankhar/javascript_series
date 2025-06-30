@@ -168,6 +168,63 @@ let fit = bie.filter(function(vals){ // this is a callback function is used for 
 });
 console.log(fit); // print the filteration value after all the function from the array elements.
 
+/* reduce array Method */
+let total = 0; // initlize total varible with 0 value.
+let red = bie.reduce(function(total, values) // reduce function pass two arguments + two arguments [index, array itself ] are ommited reasone behind this :-(ignored because this function call itself)..its mendatory for add atleast two arguments 
+{
+    return total + values; // creatin addition operation with all values of an array and returns the total value of the after addition of the value to call back function variable for further operation
+});
+ console.log(red); // print the total sum of all array elements
+
+ /* every array method */
+
+ let ever = bie.every(function(values){ // this method pass one value as array elements into the call-back function for perform further opration. in the call-back function it check each and every condition is pass the condition test or not. if not then return false result else true
+    return values >= 2; //check and verify the each element of the array that should be clear the test..if each element pass the condition test mentiond in callback function, it returns the true as result else false.
+ });
+console.log(ever);
+
+/* some  array method */
+
+let some = bie.some(function(valz){// this method pass one value as array elements into the call-back function for perform further opration. in the call back funtion it check each element of the array and require atleast 1 true condition for pass this test. if  have atleast 1 true condition then it returns true else false.
+    return valz > 45 ; // check and verify the each element of array  that pass the condition. if atleast one array element is clear the test then it return as true else false
+ });
+console.log(some);
+
+/* from array Method */
+
+let str = "The from() method can return an array from any variable with a length property"; // initlizing a string
+let from = Array.from(str);// array from method. this method requiresArray. Keyword before from  function call means Array.from();// this is fixed for every time when it initlize. you just put from( // string varible here ), this converts the string into array elements.
+console.log(from); // print the array elements that are converted from the stringe to array.
+
+let frm = Array.from(bie, (x) => x ** 3); // here we perform two common but different method for perform same mathod but different syntax.. this method the x super power uppon by 2 and provide the result as on that basis. 
+let frms = Array.from(bie, (x) => Math.pow(x,3)); // here we perform two common but different method for perform same mathod but different syntax.. this method the x super power uppon by 3 and provide the result as on that basis.
+console.log(bie);
+console.log(frm);
+console.log(frms);
+
+/* Array keys Method */
+
+let kies = "";
+cars.keys().forEach(function(vals){
+    kies += "\n"+ vals + " => " + cars[vals] + " \n" ;
+}) ;
+console.log(kies);
+
+/* Array entries Method */
+
+cars.entries().forEach(function(vals){
+    kies += "\n"+ vals + "\n";
+});
+
+console.log(kies);
+
+/* Array With Method  */
+
+let update_cars = cars.with(1, "Mahindra and Mahindra");
+console.log(cars); 
+console.log(update_cars);
+/*console.log(Array.from(kies).reverse());
+ */
 /* some array method that are
 
         1.  pop() => remove the last element of an Array
@@ -199,7 +256,7 @@ console.log(fit); // print the filteration value after all the function from the
         23. sort() + reverse() = Sort the array elements sort as DESCENDING order from the big number to small number..not metter what the array index of this. just sort as descending order.
         24. toSorted() => this method is also similar to sort method and also used for sort array elements, but a major differnce between them is that where sort method is alter the original array and sord the original array,
                             but toSorted method is not affecting the original array and it create the replica of original array and sort that new replica of original...or sort the new array..
-        25 toReversed() => this method is also similar to reverse but not the same where the reverse method is used to reverse order of an original array, but in toReversed method it create the new array of original array,
+        25. toReversed() => this method is also similar to reverse but not the same where the reverse method is used to reverse order of an original array, but in toReversed method it create the new array of original array,
                             know as replica of an original array, and then sort this back to front as index wise like [15,18,9,8,87,6,5,4,3,2,19,90].
                             
                 // **  Note that ** -> sort method is basicalyy sort the string , so  in string if we found "100" and "25" that both are string and sort method sort it ass 100,25 becouse 1 (100) is small then 2 (25)
@@ -218,12 +275,36 @@ console.log(fit); // print the filteration value after all the function from the
         31. math.min.apply(null,array assign name)=> this function is used to find the smallest value from the array, math.min(array) <= x; this is not accespt direct array value , for execution the methode this required apply method.
         32. sort objects => point.sort(function(a,b){return a.year - b.year}); for ascending order// point.sort(function(a,b){return b.year - a.year}); for descending order (year is belongs to car model)
         33. array.forEach funnction=> this function is run on each value or element of a specific array till array value not complete.
-        34. array map () => thi function is not affecting the original array. it create a copy or clone of original array and affecting/modifying that clone array according to user requirement
+        34. array map () => this function is not affecting the original array. it create a copy or clone of original array and affecting/modifying that clone array according to user requirement
         35. array flatMap()=> flatmap array method or function is used for mapping the array. with flatmap it first map all elements of array then it create a copy of the original array that we have provide it.
                                 means multilayer / nestied loop ko ek level mein convert karta hai. 
         36. array filter() => this method is used for filteration array elements accaording to user requirement, this find and filter all data from the array elements.
-
-
+                            Note that the function takes 3 arguments:
+                                The item value
+                                The item index
+                                The array itself
+                            In the example mentdioned in upper part of this documentation, the callback function does not use the index and array parameters, so they can be omitted.
+        37. array reduce() => this function or method is used to reduce the length of array with sum of all array elements. in simple terms we can say this method is used to calculae the sum of all array elements.
+                            basically reduce methode requires atleast two arguments like one total, value; 
+        38. array every() => this function is used to check and verify that each element of array is pass the condition test that is mentioned in the call-back function. if condition is true then it returns result as true in boolean else false
+                            from the all elements of array if one conditon is false. then this return false.. this should be require all is perfect. means all elements of array past test and  provide 100% results.
+        39. array some() =>  this function kor method is opposite of every methode.. this methode requires atleast one value or element pass the test, then it should provide result as true else false this not need 100% results.
+                             this requires atleast one value who verified or pass the call-back condition. if this pass the test then it move to further operation else this goes to out from the condition or else part.
+        40. array from() => this method is permormed when we want to convert the string as array elements and Array.from(//string varible); is fixed keyword for each time when we use this. for example "Hello" => ['H','e','l','l','o'];
+                            in javascript we annalize that if we want to perform a power operation on array elements like X^2 means x * 2 * 2, then its wrong method, 
+                            in javascript it perfrm the XOR Operation in place of the power operation known as (Exclusive OR). this is a bitwise operator that works on binary numbers like 01010 (X^2 => 88^2 = 86, 78^3 = 75).
+                            in javascript, we perform the power operation with 2 type of method like Math.pow(x,2) && another one is (X ** 2). the basically syntax of those method are different but work of these methode and output are same,
+                            where (x ** 2) is direct call for calculation or mathematical operation, hence 2nd method work like previous one but this work through the function in javascript,  the Math.pow is javascript in-Built function for perform power mathematical calculations.
+        41. array keys() => this method is used to get the keys of array elements, this is a common and important method in javascript for perform the basic and high-level operations.. this play an important role in the javascript.
+        42. array entries() => this method is used to get the array keys along with its value together. with help of this method you get both keys and vits value both together like [(01, BMW), (02, TATA) ] etc.
+                               for Example => 0,Jaguar1,Mahindra & Mahindra2,Toyota3,Volkswagon4,Skoda5,Honda6,Volvo7,BMW8,TATA; 
+                               this method is not affected the orignal array, it create  a replica of original array and then it affect or modify the cloned or replica array according to the requirement.
+        43. array with() => this method is used for update the array element without affecting the original array.. means it create a clone of original and then modify the clone array according to the requirements with affecting the original aray
+        44. array Spread() => this method is used to merge the two or more array into single array with help of spread operator(...).. this joins the arrays into single array called as merged array but not affecting the orriginal array because this create a clone of original array.
+                                for Example  :-  const arr1 = [1, 2, 3];
+                                                 const arr2 = [4, 5, 6];
+                                                 const arr3 = [...arr1, ...arr2];  output is now [1,2,3,4,5,6] or 1,2,3,4,5,6
+        
         */
 
 
