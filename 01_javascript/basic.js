@@ -229,7 +229,7 @@ console.log(update_cars);//print the updated version of cloned array from the or
 
         1.  pop() => remove the last element of an Array
         2.  shift() => remove the first element of an Array
-        3.  push() => add new elemt into the existing array
+        3.  push() => add new element into the existing array
         4.  join() => join each element of the array with other as String
         5.  toString => this convert the array as String
         6.  unshift() => this is used for add new value or element into the array at the bigning
