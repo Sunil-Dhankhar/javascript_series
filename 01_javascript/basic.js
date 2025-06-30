@@ -304,8 +304,46 @@ console.log(update_cars);
                                 for Example  :-  const arr1 = [1, 2, 3];
                                                  const arr2 = [4, 5, 6];
                                                  const arr3 = [...arr1, ...arr2];  output is now [1,2,3,4,5,6] or 1,2,3,4,5,6
-        
+        45. array rest() => this method is used to  create a clone of original array and then assign the clone array elements to new variables without affecting the original array. this method is perform a differnt type of job/work like it assign the all element to a variable
+                            this is a collactive method to collect array elements in a variable. this have also a (...) rest operator
+                            for Example :-> let a, rest; //initilize new variables
+                                            const arr1 = [1,2,3,4,5,6,7,8]; // initilize new array with its elements
+                                            [a, ...rest] = arr1; // assign the array values to voth varibale likr a =>1 ,  ....rest => 2,3,4,5,6,7,8
+                                            a get first element of the array and ...rest operator get all remaining value from the array.
+        46. array const => this is not just a keyword const <varible name>, this is a reference of array that once declared, not modified again,
+                            once declared method not change the value ever, this case beloongs to a variable, but in array, this case not applicable, in the array you can change the value of elements when you want with help of various method like push method
+                                    for example :-> const cars = ["Saab", "Volvo", "BMW"]; // initlize the new array
+                                                    cars[0] = "Toyota"; // reassign or update the first element of the array
+                                                    cars.push("Audi"); //  here array push method add new element in the array with new value in end of array.
+                                                    output is => "Toyota", "Volvo", "BMW", "Audi".
+                           ** Note => it is mendatory or must to declare values when the const variable or array is initilized or declared.. without the values declare it provide error.
+                                for Example => const care; // initilize or declare the empty variable.
+                                                care = ["healthcare", "bodycare", "skincare"]; //assign or declare the value
+                                                now you can check that the when you reload the screen you got error like const varible syntax error or declared but not assigned somthing like this.
+                            ** An array declared with const has Block Scope.
+                            ** An array declared in a block is not the same as an array declared outside the block:
+                                    for Example  :- const cars = ["Saab", "Volvo", "BMW"]; // Here cars[0] is "Saab"
+                                                    {
+                                                        const cars = ["Toyota", "Volvo", "BMW"]; // Here cars[0] is "Toyota"
+                                                    }
+                                                    // Here cars[0] is "Saab"
+
+                                                here you can see the internal const car[0] and outer cars[0] are not same,becase the block space differntciate the both from ech other, 
+                                                the block space make both differnt from each other.
+                            Redeclaring Arrays
+                            Redeclaring an array declared with var is allowed anywhere in a program: var cars;
+                                                    for Example :-> var cars = ["Volvo", "BMW"];   // Allowed
+                                                                    var cars = ["Toyota", "BMW"];  // Allowed
+                                                                    cars = ["Volvo", "Saab"];      // Allowed
+                                                                    const cars = ["Volvo", "BMW"];   // Not allowed
+                                                                    {
+                                                                          const cars = ["Volvo", "BMW"]; // Allowed
+                                                                          var cars = ["Volvo", "BMW"];   // Not allowed
+                                                                    }
+
         */
+
+        
 
 
 
