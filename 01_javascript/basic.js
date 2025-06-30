@@ -198,33 +198,33 @@ console.log(from); // print the array elements that are converted from the strin
 
 let frm = Array.from(bie, (x) => x ** 3); // here we perform two common but different method for perform same mathod but different syntax.. this method the x super power uppon by 2 and provide the result as on that basis. 
 let frms = Array.from(bie, (x) => Math.pow(x,3)); // here we perform two common but different method for perform same mathod but different syntax.. this method the x super power uppon by 3 and provide the result as on that basis.
-console.log(bie);
-console.log(frm);
-console.log(frms);
+console.log(bie); // print bie array elements
+console.log(frm); // print the array elemets that each value/element have X^3 or x*3*3 (5*5*5=125)
+console.log(frms);// print the array elemets that each value/element have X^3 or x*3*3 (5*5*5=125)
 
 /* Array keys Method */
 
-let kies = "";
-cars.keys().forEach(function(vals){
-    kies += "\n"+ vals + " => " + cars[vals] + " \n" ;
+let kies = ""; // initilize an empty variable 
+cars.keys().forEach(function(vals){ // start keys method with foreach function for get the array elements keys from the the array 
+    kies += "\n"+ vals + " => " + cars[vals] + " \n" ; // assign and reassign the array elements keys with array values
 }) ;
-console.log(kies);
+console.log(kies); // print the value assign varible as string;
 
 /* Array entries Method */
 
-cars.entries().forEach(function(vals){
-    kies += "\n"+ vals + "\n";
+cars.entries().forEach(function(vals){ //call back freach function with entries method that belongs to array
+    kies += "\n"+ vals + "\n"; // assign and reassign the keys and values both into the variable. like (0,saab)
 });
 
-console.log(kies);
+console.log(kies); // print the all elements of the array with its keys as string like 0,saab,1,BMW,2,Audi etc.
 
 /* Array With Method  */
 
-let update_cars = cars.with(1, "Mahindra and Mahindra");
-console.log(cars); 
-console.log(update_cars);
-/*console.log(Array.from(kies).reverse());
- */
+let update_cars = cars.with(1, "Mahindra and Mahindra"); // Array  With Method is used to update the old array element value with new element value or replace the new array element with old array value.. 
+console.log(cars); // print the original array with elements
+console.log(update_cars);//print the updated version of cloned array from the orignal.
+
+
 /* some array method that are
 
         1.  pop() => remove the last element of an Array
