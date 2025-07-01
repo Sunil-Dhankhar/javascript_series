@@ -69,3 +69,25 @@ function timezone() {
 
 timezone(); // call back function for
 
+/* Date Time Set Methode */
+
+function change_year(){
+    let setdate = date.setFullYear(2020, 0, 31); // set the current year, month, date according to the requirement.... here we change the current year(2025-07-01) to (2020-03-31)
+    //SetFullYear(2020) for set year
+    //setMonth(11) for month **note month of the year in javascript should be between ( 0 for jan - dec for 11) = 12 months
+    //setDate(30) for month date
+
+    // suppose you want to change the date as 31 feb 2020, and you put a value like (2020-year, 1-month, 31-date), then you get result as 2020-03-02, because feb month is leap month and its contain (28-29 days) only. then the differnce of the day carry moved to the next month.
+
+    console.log(date);// print the full date after change the year 
+}
+
+change_year();//call back function
+
+function get_days_diff()// initilizing the new function for get differnce between the dates
+{
+    const date = new Date("2025-1-01"); // initialize the new date into the constant variable
+    const diff = date.setDate(date.getDate() + 50); //this method genrate a differnce between previous mention date and then sum 50 on previous for get 50 days ago date. if date is 1 january then after reamining dates is 30 so it calculate like (50 -30) = 20 ,so 20th Feb is the next 50th date.
+    console.log(date.toString());
+}
+get_days_diff();
