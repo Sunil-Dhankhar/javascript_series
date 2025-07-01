@@ -83,10 +83,4 @@ console.log(g);
 console.log(typeof p.toString());
 console.log(p.toString());
 
-let date = new Date();
-console.log(d);
-
-        
-
-
 
