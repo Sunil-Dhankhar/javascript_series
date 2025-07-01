@@ -86,8 +86,34 @@ change_year();//call back function
 
 function get_days_diff()// initilizing the new function for get differnce between the dates
 {
-    const date = new Date("2025-1-01"); // initialize the new date into the constant variable
-    const diff = date.setDate(date.getDate() + 50); //this method genrate a differnce between previous mention date and then sum 50 on previous for get 50 days ago date. if date is 1 january then after reamining dates is 30 so it calculate like (50 -30) = 20 ,so 20th Feb is the next 50th date.
+    const date = new Date("2020-1-01"); // initialize the new date into the constant variable
+    const diff = date.setDate(date.getDate() + 90); //this method genrate a differnce between previous mention date and then sum 50 on previous for get 50 days ago date. if date is 1 january then after reamining dates is 30 so it calculate like (50 -30) = 20 ,so 20th Feb is the next 50th date.
     console.log(date.toString());
 }
 get_days_diff();
+
+// setHours(20) // this is used for set hours of the perticular date 
+// setHours(20,25,12); // you can also set the hours with minutes along with seconds 
+// setMinutes(35) //with help of this method we can set a minutes as per requirement like space mission countdown starts from this time
+// setSeonds(48) //this method is used for set the seconds as like minutes and hours for perticular time show.
+
+
+// comparision between two dates 
+
+function compares()
+{
+    const date = new Date();
+    const comp = new Date();
+
+    const new_date = comp.setDate(2026, 1, 1);
+    if( new_date > date)
+    {
+        var msg = "this is the future Date..";
+    }
+    else
+    {
+        var msg = "this is the Past.. Date";
+    }
+    console.log(msg)
+}
+compares();
