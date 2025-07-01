@@ -1,3 +1,41 @@
+    // Variables are Containers for Storing Data
+    // JavaScript Variables can be declared in 4 ways:
+    //{
+    // Automatically
+    // Using var
+    // Using let
+    // Using const
+    // }
+    // Variables declared with let have Block Scope
+    // Variables declared with let must be Declared before use
+    // Variables declared with let cannot be Redeclared in the same scope
+
+    // Variables defined with const cannot be Redeclared
+    // Variables defined with const cannot be Reassigned
+    // Variables defined with const have Block Scope
+
+    // Javascript Operators
+    // The Assignment Operator = assigns values
+    // The Addition Operator + adds values
+    // The Multiplication Operator * multiplies values
+    // The Comparison Operator > compares values
+    
+    // JavaScript Data Types
+    // # call by value Datatypes :-
+    // String
+    // Number
+    // Bigint
+    // Boolean
+    // Undefined
+    // Null
+    // Symbol
+    // # Call by Referance Datatypes
+    // Object
+    // Built-in object types can be:
+    // objects, arrays, dates, maps, sets, intarrays, floatarrays, promises, and more.
+
+
+    
     const accountID = "123456";
     name = "";// name is declared as null property
     if(!name) // check name is recived as null...if null then condition is true 

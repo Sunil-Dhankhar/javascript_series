@@ -1,5 +1,11 @@
-/* Array  */
+// Javascript Function
+/* ---------------------------------- */
+// A JavaScript function is a block of code designed to perform a particular task.
+// A JavaScript function is executed when "something" invokes it (calls it).
+// function <function name>(){ --write your code herer --} 
 
+/* JavaScript Array Functionality  */
+ 
 const cars = ["Saab", "Volvo", "BMW"]; // this is an array of javascript
 const car = ["Ford", "Kia", "Hundai"]; // this is an array of javascript
 console.log(Array.isArray(cars)); // this is check that is that object is an array or not
