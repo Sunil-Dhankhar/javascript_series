@@ -47,6 +47,7 @@
         const z = x;
         console.log( (x==y)); //comparing with print the comparisone result // the result is false..
         console.log(( z == x)); //again compare the two variable with object // this time result is true.
+        // x == y :- false
         // x == y or x === y :- false , both varibles have same datatypes but x and y are both different objects, and these have also a different referance. so in javascrept when we test or compare two object then it is must that both object referance is same for compare.
         // z == x :- true  , because z and x are have same referance and object..and javascript rule says when a reffernce and object of two or more varible is same then they are in true condition.so this is in true condition
     }
@@ -133,6 +134,9 @@
         }
 
         chain_opt(); // call back function for optional chaining operator.
+
+        
+        
 
     /* Loops */
     
