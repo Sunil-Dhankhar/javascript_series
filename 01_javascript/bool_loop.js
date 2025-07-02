@@ -115,11 +115,24 @@
             let watercolor; //declaring variable with undefined value
             let seacolor = "Sea-Green"; //declaring a variable with value 
             let skycolor;// = "Blue"; // declaring a variable with value
-            let result =  watercolor ?? groundcolor ?? skycolor ?? seacolor;
-            console.log(result);
+            let result =  watercolor ?? groundcolor ?? skycolor ?? seacolor; //verify which varible have value.. if first varible have value then it ignore all remaining variable else go to second and again check same procedure if found then print with ignore remaining elements alse move on till it get not a value from a element or variable ..
+            console.log(result); // print result
         }        
 
-        null_coal();
+        null_coal(); // callback function for nullish coalesing operator
+
+    /*              Optional Chaining Operator (?.) 
+            // the optional chaining operator(?.) returns undefinde value if object have not that value...or  if an object is undefined or null (instead of throwing an error).     
+            // an example written in below related with this operator.
+    */
+
+        function chain_opt() // function related with optional chaining operator 
+        {
+            const student = { class : "BA", type: "Arts", Roll_no: 12456 }; // declare a variable as a object
+            console.log(student ?. name); //  checking here that given element is exist in object or not .. if exist then print it else provide result as undefined
+        }
+
+        chain_opt(); // call back function for optional chaining operator.
 
     /* Loops */
     
