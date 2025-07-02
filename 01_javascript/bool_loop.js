@@ -149,5 +149,82 @@
     }
     console.log(text);
 
+// conditional statement :-> if else statements 
+// switch case :-> switch choose case according to the condition
+// for loop :-> run the loop or condition till condition become false...Loops can execute a block of code a number of times.
+// for In loop :-> this loop run till object value is found. this returnkeys when it an array is plac in this loop. basically it works on index keys. this is used for mainly objects and arrays.in this method you must be create a iterable of object and then run the loop while got properties
+// for of loop :-> this loop run till array value or string value is found, this is used for mainly arrays and string and other data types,but not directly on objects.in this method you must be create a iterable of object and then run the loop while got properties  
+// forEach :-> run for each element of the loop till condition become false. this loop work on array..if you have an object then first you convert this array from object then after foreach work.
+// while loop :-> while loop run when condition is true the it run till element exist in array or object .
+// do while loop :-> do while is another part op looping section in this loop it runs or execute first then check condition is true or false..in simple terms we sya it run atleast one time even condition is false...becouse the loop run first and condition is test after that. so one time it run.  
+// break :-> break stop the condition to run further where it place and after the condition true it break the chain of loop and stop the further execution.
+// continue :-> this method is used for skip the special part of script where it placed...when condition is true where it place it move further execution with skip of that part of loop.
+   
+// an Example of For In Loop written in Below
 
-    
+{ //start a new scope for differentiate the variable or reduce variable name conflicts 
+    const person = {fname:"Smith", lname:"Williams", age:27}; //declare a const variable with Object datatype and values;
+    let txt = ""; // declare a variable with empty string value;
+    let arrays = Object.entries(person);//converting the object into the array form along with keys and properties.
+    for (let x in arrays) { // for In loop  start and now x is iterable of person object, means x represent the all value of persone object
+    txt += arrays[x][0] + " "; // fetching one by one each value of persone object using its key(x) and store it txt variable.
+    }
+    console.log(txt);// print the txt varible with its Holding values
+}
+
+// an Example with foreach loop written in below
+
+{ //start a new scope for differentiate the variable or reduce variable name conflicts 
+   
+    // Use **Object.entries()** when you need both key and value
+    // Use **Object.values()** when you only need the values
+    // Use **Object.keys()** when you only need the keys
+
+    const person = {fname: "John", lname: "Doe", age: 25}; //declare constant varible person as object with its value 
+    let txt = ""; // declare the variable with null value as a string
+    let arrays = Object.entries(person);// convert the object as array with key and value 
+
+    arrays.forEach(function([index , value ]) { // grab each value of object array with its key
+    txt += value + " "; //store each value into the another variable for further operation.
+    }); 
+    console.log(txt);// print the txt varible with its Holding values
+}
+
+// an example of For of loop written in below 
+{
+	const cars = {model :"BMW", name :"x3", year:2006}; // declare a object with its value and properties
+  	let arrays = Object.entries(cars); // convert the object into array with its keys and values, you can access only key or value  
+  	let text = ""; //declare the variable as null value with string data type
+  	for (let x of arrays) { //start for of loop , in which we grab all value and its key into the iteration variable (x) of arrays varible
+    	text += x[1] + " "; // grab and store the value of each property of object that converted into the array form into the text varible, // x[0] for keys
+  	}
+    console.log(text); // print all values or keys that are stored into the text variable
+}
+
+/*   an example of Do-while loop  written in below */
+
+{ // scope starts for create script differnt from each other and reduce the conflict variable names from each other becouse they are declared into the scope so they exist only in the scope..outside of the scope they are unknown and undeclared variables and if declared then start conflict with other variables
+    const cars = {model :"BMW", name :"x3", year:2006}; // declare a object with its value and properties
+    let arrays = Object.entries(cars);//convert the object with its property into array called object array...called as associative array
+    let x = 0; // declare a variable with value 0
+    let text = ""; // declare a empty string variable
+    do{
+        text += arrays[x][0] + " : " + arrays[x][1] + " \n"; //fetch and store the value of object array with its key value into the text variable that is declared before loop starts
+        x++; // increment 1 each time when do condition is run
+    }
+    while(x < arrays.length)// run till when condition become true to false
+    console.log(text); // print the output here related with do section script
+}
+
+/*       Javascript Sets     */
+
+//an example of javascript set  written in below
+const arr = [1, 2, 3, 3, 4, 2]; //declare a array with various values
+
+const sets = new Set(arr); //create a set with convets of array values into sets .. with removeal of duplicate enteries
+
+for(let sod of sets) // start for  ofloop for fetch each value of Set known a bucket of uniqe values 
+    {
+
+        console.log(sod + " \n"); // print the each value of set from the set bucket
+    } 
