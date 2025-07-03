@@ -234,11 +234,62 @@ for(let i = 0; i < 11; ){ // start forLoop for add new Set elements
     i++; // after add it increment +1 in i value
 }
 console.log(sets);
-
-// with this above mentioned example we see that like array, in set indexing is not matter, in Set position of element where it added matter only position of that element where is added and placed.
-
+const sett = sets;
+{
+    var txt = "";
+    for (let x of sett)
+    {
+        txt += x + 1 +"\n";
+    }
+    console.log(txt);
+}
+ console.log(sets.size);
+// with this above mentioned example we see that like array, in set indexing is not matter, Set is based on uniqueness and values, not position what is the value if uniqe then add if duplicate then remove duplicate value .
+ 
 let pt; //declare variable without the value called undefined variable
 console.log(sets.add( pt = "saab")); // define value into the previous declared variable and then add it into the set after that print this.
+
+console.log(typeof sets ); //get type of variable that we have declared or this variable belongs to which data-type. 
+console.log(sets instanceof Array); // false // when you want to know the prototype (parent, refered object,class,array etc) of a variable ...means this varible belongs to which datatype. this provide result in boolean value(true or false).
+console.log(sets instanceof Object);// true
+console.log(sets instanceof Set); // true
+console.log(sets instanceof String); // false
+
+let std = "erosteps" ; // this is a string and its datatype is string.
+let student = new String("erosteps");// this is type of object in javascript called as Object
+console.log(student instanceof String); //true
+console.log(sets instanceof String); //false  // because this String and Set both are objects but they are differnt objects and so refrence of sets variable belongs to Set object not to String object, so this i reasone behind the False Output
+ 
+
+/*  *******     Notation *******
+*************************************
+    *   if we want to know that which methode is availble for apply that particuler datatype then we go to the browser console and then we type in console that method and get output in log of that..
+        for Example .... Here we want to know for String which method are availabel ...go to browser console and type 
+                 .e.g :->   let student = new String("erosteps");
+                            console.log(student);
+                          now click on info tab in left sidebar then you see in result window with Accordian Tabs with arrows  
+                          you see that you have got result as undefined.. and then after String {"erosteps"} as result with Accordian Tabs with Arrow 
+                          when you click on  arrow then sub-part of that result is open and you have got lots of methods related with that object.
+
+    *   this is happend with only Non-Primitive data-types, not with Primitive Data-Types.
+    *   that not means that if Primitive Data-types are not shown any method in console panel then we cant apply any method on Primitive datatype variables..We Can do It..
+        For Example  : -> let student = "Rohanpreet" ;
+                            console.log(student.UpperCase());
+                            when we run this script ..this will be work and we got result inoutput like below written.  
+                            //output :-> ROHANPREET
+    *    when we want to know how many values or elements are exist into the Set object then we cat use  Javascript method (.length) because this works on array and string
+                            but in set object we use only sets.size methode to know the size of set..means how many elements are exist in a set.
+    *                       in short term  we can say   .length =>  Array,String
+    *                                                   .size   =>  Map,Set 
+*/
+console.log(std.slice(3).padStart(std.length, "X")); // XXXsteps // padding method for masking the character or numbers according to your requirement 
+let mobile = 1234567891;
+mobile = mobile.toString();
+console.log(mobile.slice(mobile.length-4).padStart(mobile.length, "X"));
+
+
+
+
 
 
 
