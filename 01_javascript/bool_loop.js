@@ -259,7 +259,21 @@ let std = "erosteps" ; // this is a string and its datatype is string.
 let student = new String("erosteps");// this is type of object in javascript called as Object
 console.log(student instanceof String); //true
 console.log(sets instanceof String); //false  // because this String and Set both are objects but they are differnt objects and so refrence of sets variable belongs to Set object not to String object, so this i reasone behind the False Output
- 
+
+console.log(std.slice(4).padStart(std.length, "X")); // XXXsteps // padding method for masking the character or numbers according to your requirement 
+let mobile = 1234567891; // declare a variable with number datatype
+mobile = mobile.toString(); //convert the data type from number to string
+console.log(mobile.slice(mobile.length-4).padStart(mobile.length, "X"));// XXXXXX7891 // Padding method is used here to secure or unreadble from others create a mask on given string according to the requirement with help of padStart,PadEnd method
+console.log(mobile.slice(0, 4).padEnd(mobile.length, "X"));// 1234XXXXXX // Padding method is used here to secure or unreadble from others create a mask on given string according to the requirement with help of padStart,PadEnd method
+console.log(sets.values());// this return the value of a set object like a array form with each value of set
+console.log(sets.keys()); //  Set have not any key like array because it not use the indexing like array so you can access same result with values or keys from the Set Object. 
+console.log(sets.entries()); //  in javascript set object a method known as entries() is used for create a pair of output or result according to the requirement. like a,a -b,b-c,c and so on.
+
+
+// in padstart method when we select slice positive number then it take how many charcter to be masked before given length.
+ // ***//  in First part => mobile length = 10;  slice (10 -4 = 6),pad start means pad or mask charcter in starting of the string ,start from 1st letter to given length = 6 means 1-> 6 // XXXXXX7891
+// ***//   in second part => mobile length = 10;  slice (start(0, end(4))),pad End means pad or mask in last of string, start just after given range like left 0->4  and mask remained charcter like // 1234XXXXXX
+     //    we have string length 8 charcter, suppose slice(4) then it take first 4 or last 4 charector depending on requirement
 
 /*  *******     Notation *******
 *************************************
@@ -275,18 +289,50 @@ console.log(sets instanceof String); //false  // because this String and Set bot
     *   that not means that if Primitive Data-types are not shown any method in console panel then we cant apply any method on Primitive datatype variables..We Can do It..
         For Example  : -> let student = "Rohanpreet" ;
                             console.log(student.UpperCase());
-                            when we run this script ..this will be work and we got result inoutput like below written.  
+                            when we run this script ..this will be work and we got result in output like below written.  
                             //output :-> ROHANPREET
     *    when we want to know how many values or elements are exist into the Set object then we cat use  Javascript method (.length) because this works on array and string
                             but in set object we use only sets.size methode to know the size of set..means how many elements are exist in a set.
     *                       in short term  we can say   .length =>  Array,String
     *                                                   .size   =>  Map,Set 
 */
-console.log(std.slice(3).padStart(std.length, "X")); // XXXsteps // padding method for masking the character or numbers according to your requirement 
-let mobile = 1234567891;
-mobile = mobile.toString();
-console.log(mobile.slice(mobile.length-4).padStart(mobile.length, "X"));
 
+ // we have created thre example for concatinate two or more set with uniqe values into one comman set 
+    
+    const A = new Set(['a','b','c']);// declare a new constant varable with new set object have contain values
+    const B = new Set(['b','c','d']);
+ 
+{    
+    let text = "";
+    for (const x of A) {
+        text += x;
+    }
+
+    for (let x of B)
+    {
+        text += x;
+    }
+    
+    const C = new Set(text);
+    console.log([...C]); 
+}
+
+{
+    const C = new Set([...A, ...B]);
+    console.log([...C]); 
+}
+ 
+// new script with union method
+{
+    const C = A.union(B);
+
+    let text = "";
+    for (const x of C) {
+        text += x;
+    }
+    console.log ([...text]);
+
+ }
 
 
 
