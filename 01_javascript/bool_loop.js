@@ -224,7 +224,22 @@ const arr = [1, 2, 3, 3, 4, 2]; //declare a array with various values
 const sets = new Set(arr); //create a set with convets of array values into sets .. with removeal of duplicate enteries
 
 for(let sod of sets) // start for  ofloop for fetch each value of Set known a bucket of uniqe values 
-    {
+{
+    console.log(sod + " \n"); // print the each value of set from the set bucket
+}
 
-        console.log(sod + " \n"); // print the each value of set from the set bucket
-    } 
+for(let i = 0; i < 11; ){ // start forLoop for add new Set elements 
+    
+    sets.add(i); // add new element into set 
+    i++; // after add it increment +1 in i value
+}
+console.log(sets);
+
+// with this above mentioned example we see that like array, in set indexing is not matter, in Set position of element where it added matter only position of that element where is added and placed.
+
+let pt; //declare variable without the value called undefined variable
+console.log(sets.add( pt = "saab")); // define value into the previous declared variable and then add it into the set after that print this.
+
+
+
+
