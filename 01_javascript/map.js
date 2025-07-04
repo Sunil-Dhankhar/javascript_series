@@ -27,7 +27,7 @@ const fruits = new Map([ //create or declare a new varible  with multilevel arra
     let sets = fruits.set("mango", 400)
     console.log(sets);//Map(4) { 'apples' => 500, 'bananas' => 300, 'oranges' => 200, 'mango' => 400
 }
-}
+
 
 {
     let sets = fruits.has("mango")
