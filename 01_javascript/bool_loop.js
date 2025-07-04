@@ -216,7 +216,18 @@
     console.log(text); // print the output here related with do section script
 }
 
-/*       Javascript Sets     */
+/*       Javascript Sets     
+
+    set methods  =  new Set() //declare new set
+                    add() // add new property or element 
+                    clear() //clear set with remove all elements 
+                    delete() // delete the perticuler elements from the set
+                    entries() // used to create a pair of keys and values, a,a: b,b:c,c 
+                    forEach() // forEach method is used get every value of set 
+                    has() // check and verify the element or value exist or not 
+                    keys() // keys method is used to get the keys of set, but set is not any type of key so it grab the set values in place of keys
+                    values() // this method is used to get the values of set  
+*/
 
 //an example of javascript set  written in below
 const arr = [1, 2, 3, 3, 4, 2]; //declare a array with various values
@@ -299,44 +310,79 @@ console.log(sets.entries()); //  in javascript set object a method known as entr
 
  // we have created thre example for concatinate two or more set with uniqe values into one comman set 
     
-    const A = new Set(['a','b','c']);// declare a new constant varable with new set object have contain values
-    const B = new Set(['b','c','d']);
+    const A = new Set(['a','b','c']);// declare a new constant varable with new set object have some values
+    const B = new Set(['b','c','d']);// declare a new constant varable with new set object have some values
  
-{    
-    let text = "";
-    for (const x of A) {
-        text += x;
+ {    // start a new scope 
+    let text = ""; //declare a variable with empty string
+    for (const x of A) {//start a for of  loop for get referance variable values Set of A and insert the all values into x variable
+        text += x; // insert the each value of set object from x variable to  text varible one by one;
     }
 
-    for (let x of B)
+    for (let x of B)//start a for of  loop for get referance variable values Set of A and insert the all values into x variable
     {
-        text += x;
+        text += x;// insert the each value of set object from x variable to  text varible one by one;
     }
     
-    const C = new Set(text);
-    console.log([...C]); 
-}
+    const C = new Set(text);//declare a new set object and insert all values of text variable into this set, this set get only uniqe values from the text variable and ignore the duplicate values 
+    console.log([...C]); // print  a referance variable with sepred operator (create values as like array but actually it as set not array) as new declared set have Uniqe values with concatination of two different sets;
+} // end of scope
 
-{
-    const C = new Set([...A, ...B]);
-    console.log([...C]); 
-}
+{ // start a new scope
+    const C = new Set([...A, ...B]); // declare a new variable as a reference variable of a set object with two sets values that get only uniqe values from both sets and ignore the duplicate values.  
+    console.log([...C]); // print  a referance variable with sepred operator (create values as like array but actually it as set not array) as new declared set have Uniqe values with concatination of two different sets;  
+} // end of scope
  
+// new chapter related wit set known as Set Logic
 // new script with union method
-{
-    const C = A.union(B);
+{ // start a new scope related with union
+    const C = A.union(B); // concatinate set A with Set B with unique methode, that store values into another new variable with help of union javascript method, that is used to grab uniqe values from the both sets   
+    console.log([...C]); //abcd // print the new declared variable C all values with sepred operator.
+     //*****            // union means set 1 + set 2 = set 3 (all values of set 1 and set 2 then grab uniqe values from both sets and then store uniqe values into set 3 or variable 3 )
 
-    let text = "";
-    for (const x of C) {
-        text += x;
-    }
-    console.log ([...text]);
+}
 
- }
+{   // start a new scope related with intersection method (Grab common values or duplicate or repeted values)
+    const C = A.intersection(B); // intersection method in javascript is used to get common value that are exists in both Sets, Arrays, Objects etc
+    console.log([...C]); //b,c // print the new declared variables have comman values of both sets values that exist in both sets
+}
 
+{   // start a new scope related with difference method (Grab only primary set value that is not exist in secondery set)
+    const C = A.difference(B); // difference method in javascript is used to get uniqe value  that exist in primary set but not exists in secondery Sets, Arrays, Objects etc
+    console.log([...C]); //b,c // print the new declared variables have uniqe values of Primary sets that not exist in secondery sets
+}
 
+{   // start a new scope related with symmetricDifference method (Grab only uniqe values that are not existing in other set)
+    const C = A.symmetricDifference(B); // symmetricDifference method in javascript is used to Grab only those value that are not comoon in both set from both in sets
+    console.log([...C]); //a,d // print the new declared variables have uniqe values from both sets that not exist in other set.
+}
 
+{   // start a new scope related with isSubsetOf method (check and verify the all values of primary set are existing in secondery set or not if exist then it returns true else false, Means primary set is subpart of secondery set )
+    const C = A.isSubsetOf(B); // isSubsetOf method in javascript is used to check and verify that primary set all values are exists in secondery Sets or not if exist returns true else false
+    console.log(C); //false //true or false // print the new declared variables have boolean values with the result after the calculation of both set. 
+} // end of the scope
 
+{   // start a new scope related with isSupersetOf method (check and verify the all values of secondery set are existing in primary set or not if exist then it returns true else false, Means secondery set is subpart of primary set)
+    const C = A.isSupersetOf(B); // isSupersetOf method in javascript is used to check and verify that the Secondery set all values are exists in Primary Sets or not if exist returns true else false
+    console.log(C); //false //true or false // print the new declared variables have boolean values with the result after the calculation of both set . 
+} // end of the scope
+
+{   // start a new scope related with isDisjointFrom Method (check and verify the all values of secondery set that all values are tottaly different from the primary set values, or not if different then it returns true else false)
+    const C = A.isDisjointFrom(B); // isDisjointFrom Method in Javascript is used to check and verify the all values of secondery set that all values are tottaly different from the primary set values, or not if different then it returns true else false
+    console.log(C); //false //true or false // print the new declared variables have boolean values with the result after the calculation of both set . 
+} // end of the scope
+
+/* Notation about set Logic 
+
+    // Union => [ 'a', 'b', 'c', 'd' ] ****> concatinate set A with Set B with unique methode, that store values into another new variable with help of union javascript method, that is used to grab uniqe values from the both sets
+    // intersection => [ 'b', 'c' ] ****> intersection method in javascript is used to get common value that are exists in both Sets, Arrays, Objects etc.
+    // difference =>  [ 'a' ] ****> difference method in javascript is used to get uniqe value  that exist in primary set but not exists in secondery Sets, Arrays, Objects etc
+    // symmetricDifference => [ 'a', 'd' ] ****> symmetricDifference method in javascript is used to Grab only those value that are not comoon in both set from both in sets
+    // isSubsetOf => false  ****> isSubsetOf method in javascript is used to check and verify that primary set all values are exists in secondery Sets or not if exist returns true else false
+    // isSupersetOf => false ****> isSupersetOf method in javascript is used to check and verify that the Secondery set all values are exists in Primary Sets or not if exist returns true else false
+    // isDisjointFrom => false ****> isDisjointFrom Method in Javascript is used to check and verify the all values of secondery set that all values are tottaly different from the primary set values, or not if different then it returns true else false
+
+*/  
 
 
 
