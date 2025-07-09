@@ -124,3 +124,37 @@ console.log(typeof p.toString());
 console.log(p.toString());
 
 
+/* 
+/////////// Operator Precedence ///////////// 
+     
+    // when you have multiple operator in a condition then which operator perform or run first and which operator is run after that and so on...this is all decided by Operator Precedence.
+    // suppose   you have a basic condition like 25 + 75 * 3 = ? now here question is arrais that whic operator perform first + or *, 
+    // in this example we know that * operator have Higher Precedence  or priorty on + operator so firstly run the condition like 75 *3 = 225 then 225 + 25 = 250
+    // one thing is important if this condition is like (25 + 75) * 3 = ? this then its output definatly changed becouse now higher Precedence have () Parentheses  and inside the () code or script run first then after 2nd higher priorty operator perform the operation
+    // like (25 + 75) * 3 = 300 how lets see (25 + 75) = 100 * 3  = 300;
+    // like 100 / 50 * 3 = ? lets see 100 / 50 = 2 * 3 = 6
+
+
+    Precedence Rank	        Operator(s)	        Description 
+        (Priority)
+       
+        1 (Highest)	            ()	            Parentheses — Parentheses are evaluated first.
+        2	                    . []            ()	Property access, array index, function call
+        3	                    new	            Object // for create a new object
+        4	                    ++ --	        Post increment/decrement
+        5	                ! + - typeof	    Unary operators, NOT, type check, etc.
+        6	                    **	            Exponentiation (2 ** 3 = 8)
+        7	                    * / %	        Multiply, divide, modulus
+        8	                    + -	            Addition, subtraction
+        9	                 << >> >>>	        Bitwise shift
+        10	                 < > <= >=	        Comparison operators
+        11	                == != === !==	    Equality check
+        12	                    &	            Bitwise AND
+        13	                    ^	            Bitwise XOR
+        14	                `   	`
+        15	                    &&	            Logical AND
+        16	                    `	
+        17	                    ? :	            Ternary operator
+        18	                = += -= etc.	    Assignment operators
+        19 (Lowest)	            ,	            Comma operator — multiple expressions together
+*/
