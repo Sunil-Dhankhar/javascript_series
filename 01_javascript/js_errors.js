@@ -99,3 +99,69 @@ function errorHandler(value) // declare a  new function here
 }//end of the function
 
 errorHandler(" josh "); // call the function for execution the script with try catch method
+
+
+/*   ###############################  Reference Error  ####################################
+
+    A ReferenceError is thrown if you use (reference) a variable that has not been declared. in simple terms we can say that when a user use a variable without declare it,
+    then a error found in catch statement called as Reference Error .
+
+*/
+
+function referror() // declare a new function 
+{
+    let syska = "tubelight"; // declare a variable with a string value
+    try{ //start of try statement 
+        heros = syska.concat(heros); // concatinate the declared value with undeclared / undefined variable, and then store the value after concatinate into undefined variable;
+    }
+    catch(errors)//start the Catch Statement for getting error of script running in try statement called as Catch the Error
+    {
+        console.log("\n "+ errors.name + " => " + errors.message );//print the error with its name and message
+    }
+} // end of the referror function
+
+referror(); //calling this function by default when user load / reload the page related with function
+
+/*  ##################   Syntax Error   ######################
+
+    A SyntaxError is thrown if you try to evaluate code with a syntax error. in simple terms when a user forget to complet syntex then this error occur like incomplete (', ", {, ),`,] etc ).
+*/
+
+function syntaxerror() // declare a new function
+{
+    let cricket = "hit the ball with bat called as cricket game "; // declare and defined a variable with a value as string  
+    try { //start the try statement
+            google = "footbal and 'baseball are also physical games"; // google variable store the string as value without the declare or defined
+            eval("[cricket]',[google]");// this method have a error that pass to the catch statement
+            //eval("alert('google.com)"); //this method is have also a syntax error
+    }
+    catch(err)//start the catch statement for error handler
+    {
+        console.log("\n " + err.name +" => " + err.message);//print the error if found
+    }
+    finally { // call or start the finally statement
+        console.log("\n " + cricket.concat(google)); // concatination cricket string with google string and then print the string after concat the line into a single line
+    }
+}
+ syntaxerror(); // calling function for found syntax error..but the systax error function used in practical life in rare case.
+
+ /* @@@@@@@@@@@@@@@@@@@@@  Type Error  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+    A TypeError is thrown if an operand or argument is incompatible with the type expected by an operator or function. this mean that when a type is not convertable then it provide an error
+*/
+
+function typoerror() // start or declare the new function 
+{
+    let figure = 100; // declare a new variable with numaric value
+    try{ //start the  try statement
+       
+        figure.toUpperCase() //trying here to convert figure variable value into uppercase // but this not convert because that value not a string. 
+    }
+    catch(error){ //start the catch statement
+        console.log("\n "+error.name + " => " + error.message ) //print the coughted error from the try statement like type error
+        //console.log("\n "+ error); //provide same output like above mention console 
+    }
+
+}
+
+typoerror(); // calling this function by defaulte on page reload and then execute internal script of this function
