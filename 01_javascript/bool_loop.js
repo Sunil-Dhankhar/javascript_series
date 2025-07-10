@@ -149,6 +149,241 @@
     }
     console.log(text);
 
-    
+// conditional statement :-> if else statements 
+// switch case :-> switch choose case according to the condition
+// for loop :-> run the loop or condition till condition become false...Loops can execute a block of code a number of times.
+// for In loop :-> this loop run till object value is found. this returnkeys when it an array is plac in this loop. basically it works on index keys. this is used for mainly objects and arrays.in this method you must be create a iterable of object and then run the loop while got properties
+// for of loop :-> this loop run till array value or string value is found, this is used for mainly arrays and string and other data types,but not directly on objects.in this method you must be create a iterable of object and then run the loop while got properties  
+// forEach :-> run for each element of the loop till condition become false. this loop work on array..if you have an object then first you convert this array from object then after foreach work.
+// while loop :-> while loop run when condition is true the it run till element exist in array or object .
+// do while loop :-> do while is another part op looping section in this loop it runs or execute first then check condition is true or false..in simple terms we sya it run atleast one time even condition is false...becouse the loop run first and condition is test after that. so one time it run.  
+// break :-> break stop the condition to run further where it place and after the condition true it break the chain of loop and stop the further execution.
+// continue :-> this method is used for skip the special part of script where it placed...when condition is true where it place it move further execution with skip of that part of loop.
+   
+// an Example of For In Loop written in Below
 
+
+{ //start a new scope for differentiate the variable or reduce variable name conflicts 
+    const person = {fname:"Smith", lname:"Williams", age:27}; //declare a const variable with Object datatype and values;
+    let txt = ""; // declare a variable with empty string value;
+    let arrays = Object.entries(person);//converting the object into the array form along with keys and properties.
+    for (let x in arrays) { // for In loop  start and now x is iterable of person object, means x represent the all value of persone object
+    txt += arrays[x][0] + " "; // fetching one by one each value of persone object using its key(x) and store it txt variable.
+    }
+    console.log(txt);// print the txt varible with its Holding values
+}
+
+// an Example with foreach loop written in below
+
+{ //start a new scope for differentiate the variable or reduce variable name conflicts 
+   
+    // Use **Object.entries()** when you need both key and value
+    // Use **Object.values()** when you only need the values
+    // Use **Object.keys()** when you only need the keys
+
+    const person = {fname: "John", lname: "Doe", age: 25}; //declare constant varible person as object with its value 
+    let txt = ""; // declare the variable with null value as a string
+    let arrays = Object.entries(person);// convert the object as array with key and value 
+
+    arrays.forEach(function([index , value ]) { // grab each value of object array with its key
+    txt += value + " "; //store each value into the another variable for further operation.
+    }); 
+    console.log(txt);// print the txt varible with its Holding values
+}
+
+// an example of For of loop written in below 
+{
+	const cars = {model :"BMW", name :"x3", year:2006}; // declare a object with its value and properties
+  	let arrays = Object.entries(cars); // convert the object into array with its keys and values, you can access only key or value  
+  	let text = ""; //declare the variable as null value with string data type
+  	for (let x of arrays) { //start for of loop , in which we grab all value and its key into the iteration variable (x) of arrays varible
+    	text += x[1] + " "; // grab and store the value of each property of object that converted into the array form into the text varible, // x[0] for keys
+  	}
+    console.log(text); // print all values or keys that are stored into the text variable
+}
+
+/*   an example of Do-while loop  written in below */
+
+{ // scope starts for create script differnt from each other and reduce the conflict variable names from each other becouse they are declared into the scope so they exist only in the scope..outside of the scope they are unknown and undeclared variables and if declared then start conflict with other variables
+    const cars = {model :"BMW", name :"x3", year:2006}; // declare a object with its value and properties
+    let arrays = Object.entries(cars);//convert the object with its property into array called object array...called as associative array
+    let x = 0; // declare a variable with value 0
+    let text = ""; // declare a empty string variable
+    do{
+        text += arrays[x][0] + " : " + arrays[x][1] + " \n"; //fetch and store the value of object array with its key value into the text variable that is declared before loop starts
+        x++; // increment 1 each time when do condition is run
+    }
+    while(x < arrays.length)// run till when condition become true to false
+    console.log(text); // print the output here related with do section script
+}
+
+/*       Javascript Sets     
+
+    set methods  =  new Set() //declare new set
+                    add() // add new property or element 
+                    clear() //clear set with remove all elements 
+                    delete() // delete the perticuler elements from the set
+                    entries() // used to create a pair of keys and values, a,a: b,b:c,c 
+                    forEach() // forEach method is used get every value of set 
+                    has() // check and verify the element or value exist or not 
+                    keys() // keys method is used to get the keys of set, but set is not any type of key so it grab the set values in place of keys
+                    values() // this method is used to get the values of set  
+*/
+
+//an example of javascript set  written in below
+const arr = [1, 2, 3, 3, 4, 2]; //declare a array with various values
+
+const sets = new Set(arr); //create a set with convets of array values into sets .. with removeal of duplicate enteries
+
+for(let sod of sets) // start for  ofloop for fetch each value of Set known a bucket of uniqe values 
+{
+    console.log(sod + " \n"); // print the each value of set from the set bucket
+}
+
+for(let i = 0; i < 11; ){ // start forLoop for add new Set elements 
     
+    sets.add(i); // add new element into set 
+    i++; // after add it increment +1 in i value
+}
+console.log(sets);
+const sett = sets;
+{
+    var txt = "";
+    for (let x of sett)
+    {
+        txt += x + 1 +"\n";
+    }
+    console.log(txt);
+}
+ console.log(sets.size);
+// with this above mentioned example we see that like array, in set indexing is not matter, Set is based on uniqueness and values, not position what is the value if uniqe then add if duplicate then remove duplicate value .
+ 
+let pt; //declare variable without the value called undefined variable
+console.log(sets.add( pt = "saab")); // define value into the previous declared variable and then add it into the set after that print this.
+
+console.log(typeof sets ); //get type of variable that we have declared or this variable belongs to which data-type. 
+console.log(sets instanceof Array); // false // when you want to know the prototype (parent, refered object,class,array etc) of a variable ...means this varible belongs to which datatype. this provide result in boolean value(true or false).
+console.log(sets instanceof Object);// true
+console.log(sets instanceof Set); // true
+console.log(sets instanceof String); // false
+
+let std = "erosteps" ; // this is a string and its datatype is string.
+let student = new String("erosteps");// this is type of object in javascript called as Object
+console.log(student instanceof String); //true
+console.log(sets instanceof String); //false  // because this String and Set both are objects but they are differnt objects and so refrence of sets variable belongs to Set object not to String object, so this i reasone behind the False Output
+
+console.log(std.slice(4).padStart(std.length, "X")); // XXXsteps // padding method for masking the character or numbers according to your requirement 
+let mobile = 1234567891; // declare a variable with number datatype
+mobile = mobile.toString(); //convert the data type from number to string
+console.log(mobile.slice(mobile.length-4).padStart(mobile.length, "X"));// XXXXXX7891 // Padding method is used here to secure or unreadble from others create a mask on given string according to the requirement with help of padStart,PadEnd method
+console.log(mobile.slice(0, 4).padEnd(mobile.length, "X"));// 1234XXXXXX // Padding method is used here to secure or unreadble from others create a mask on given string according to the requirement with help of padStart,PadEnd method
+console.log(sets.values());// this return the value of a set object like a array form with each value of set
+console.log(sets.keys()); //  Set have not any key like array because it not use the indexing like array so you can access same result with values or keys from the Set Object. 
+console.log(sets.entries()); //  in javascript set object a method known as entries() is used for create a pair of output or result according to the requirement. like a,a -b,b-c,c and so on.
+
+
+// in padstart method when we select slice positive number then it take how many charcter to be masked before given length.
+ // ***//  in First part => mobile length = 10;  slice (10 -4 = 6),pad start means pad or mask charcter in starting of the string ,start from 1st letter to given length = 6 means 1-> 6 // XXXXXX7891
+// ***//   in second part => mobile length = 10;  slice (start(0, end(4))),pad End means pad or mask in last of string, start just after given range like left 0->4  and mask remained charcter like // 1234XXXXXX
+     //    we have string length 8 charcter, suppose slice(4) then it take first 4 or last 4 charector depending on requirement
+
+/*  *******     Notation *******
+*************************************
+    *   if we want to know that which methode is availble for apply that particuler datatype then we go to the browser console and then we type in console that method and get output in log of that..
+        for Example .... Here we want to know for String which method are availabel ...go to browser console and type 
+                 .e.g :->   let student = new String("erosteps");
+                            console.log(student);
+                          now click on info tab in left sidebar then you see in result window with Accordian Tabs with arrows  
+                          you see that you have got result as undefined.. and then after String {"erosteps"} as result with Accordian Tabs with Arrow 
+                          when you click on  arrow then sub-part of that result is open and you have got lots of methods related with that object.
+
+    *   this is happend with only Non-Primitive data-types, not with Primitive Data-Types.
+    *   that not means that if Primitive Data-types are not shown any method in console panel then we cant apply any method on Primitive datatype variables..We Can do It..
+        For Example  : -> let student = "Rohanpreet" ;
+                            console.log(student.UpperCase());
+                            when we run this script ..this will be work and we got result in output like below written.  
+                            //output :-> ROHANPREET
+    *    when we want to know how many values or elements are exist into the Set object then we cat use  Javascript method (.length) because this works on array and string
+                            but in set object we use only sets.size methode to know the size of set..means how many elements are exist in a set.
+    *                       in short term  we can say   .length =>  Array,String
+    *                                                   .size   =>  Map,Set 
+*/
+
+ // we have created thre example for concatinate two or more set with uniqe values into one comman set 
+    
+    const A = new Set(['a','b','c']);// declare a new constant varable with new set object have some values
+    const B = new Set(['b','c','d']);// declare a new constant varable with new set object have some values
+ 
+ {    // start a new scope 
+    let text = ""; //declare a variable with empty string
+    for (const x of A) {//start a for of  loop for get referance variable values Set of A and insert the all values into x variable
+        text += x; // insert the each value of set object from x variable to  text varible one by one;
+    }
+
+    for (let x of B)//start a for of  loop for get referance variable values Set of A and insert the all values into x variable
+    {
+        text += x;// insert the each value of set object from x variable to  text varible one by one;
+    }
+    
+    const C = new Set(text);//declare a new set object and insert all values of text variable into this set, this set get only uniqe values from the text variable and ignore the duplicate values 
+    console.log([...C]); // print  a referance variable with sepred operator (create values as like array but actually it as set not array) as new declared set have Uniqe values with concatination of two different sets;
+} // end of scope
+
+{ // start a new scope
+    const C = new Set([...A, ...B]); // declare a new variable as a reference variable of a set object with two sets values that get only uniqe values from both sets and ignore the duplicate values.  
+    console.log([...C]); // print  a referance variable with sepred operator (create values as like array but actually it as set not array) as new declared set have Uniqe values with concatination of two different sets;  
+} // end of scope
+ 
+// new chapter related wit set known as Set Logic
+// new script with union method
+{ // start a new scope related with union
+    const C = A.union(B); // concatinate set A with Set B with unique methode, that store values into another new variable with help of union javascript method, that is used to grab uniqe values from the both sets   
+    console.log([...C]); //abcd // print the new declared variable C all values with sepred operator.
+     //*****            // union means set 1 + set 2 = set 3 (all values of set 1 and set 2 then grab uniqe values from both sets and then store uniqe values into set 3 or variable 3 )
+
+}
+
+{   // start a new scope related with intersection method (Grab common values or duplicate or repeted values)
+    const C = A.intersection(B); // intersection method in javascript is used to get common value that are exists in both Sets, Arrays, Objects etc
+    console.log([...C]); //b,c // print the new declared variables have comman values of both sets values that exist in both sets
+}
+
+{   // start a new scope related with difference method (Grab only primary set value that is not exist in secondery set)
+    const C = A.difference(B); // difference method in javascript is used to get uniqe value  that exist in primary set but not exists in secondery Sets, Arrays, Objects etc
+    console.log([...C]); //b,c // print the new declared variables have uniqe values of Primary sets that not exist in secondery sets
+}
+
+{   // start a new scope related with symmetricDifference method (Grab only uniqe values that are not existing in other set)
+    const C = A.symmetricDifference(B); // symmetricDifference method in javascript is used to Grab only those value that are not comoon in both set from both in sets
+    console.log([...C]); //a,d // print the new declared variables have uniqe values from both sets that not exist in other set.
+}
+
+{   // start a new scope related with isSubsetOf method (check and verify the all values of primary set are existing in secondery set or not if exist then it returns true else false, Means primary set is subpart of secondery set )
+    const C = A.isSubsetOf(B); // isSubsetOf method in javascript is used to check and verify that primary set all values are exists in secondery Sets or not if exist returns true else false
+    console.log(C); //false //true or false // print the new declared variables have boolean values with the result after the calculation of both set. 
+} // end of the scope
+
+{   // start a new scope related with isSupersetOf method (check and verify the all values of secondery set are existing in primary set or not if exist then it returns true else false, Means secondery set is subpart of primary set)
+    const C = A.isSupersetOf(B); // isSupersetOf method in javascript is used to check and verify that the Secondery set all values are exists in Primary Sets or not if exist returns true else false
+    console.log(C); //false //true or false // print the new declared variables have boolean values with the result after the calculation of both set . 
+} // end of the scope
+
+{   // start a new scope related with isDisjointFrom Method (check and verify the all values of secondery set that all values are tottaly different from the primary set values, or not if different then it returns true else false)
+    const C = A.isDisjointFrom(B); // isDisjointFrom Method in Javascript is used to check and verify the all values of secondery set that all values are tottaly different from the primary set values, or not if different then it returns true else false
+    console.log(C); //false //true or false // print the new declared variables have boolean values with the result after the calculation of both set . 
+} // end of the scope
+
+/* Notation about set Logic 
+
+    // Union => [ 'a', 'b', 'c', 'd' ] ****> concatinate set A with Set B with unique methode, that store values into another new variable with help of union javascript method, that is used to grab uniqe values from the both sets
+    // intersection => [ 'b', 'c' ] ****> intersection method in javascript is used to get common value that are exists in both Sets, Arrays, Objects etc.
+    // difference =>  [ 'a' ] ****> difference method in javascript is used to get uniqe value  that exist in primary set but not exists in secondery Sets, Arrays, Objects etc
+    // symmetricDifference => [ 'a', 'd' ] ****> symmetricDifference method in javascript is used to Grab only those value that are not comoon in both set from both in sets
+    // isSubsetOf => false  ****> isSubsetOf method in javascript is used to check and verify that primary set all values are exists in secondery Sets or not if exist returns true else false
+    // isSupersetOf => false ****> isSupersetOf method in javascript is used to check and verify that the Secondery set all values are exists in Primary Sets or not if exist returns true else false
+    // isDisjointFrom => false ****> isDisjointFrom Method in Javascript is used to check and verify the all values of secondery set that all values are tottaly different from the primary set values, or not if different then it returns true else false
+
+*/  
+
+
+

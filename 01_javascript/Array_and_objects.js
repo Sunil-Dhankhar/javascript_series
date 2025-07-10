@@ -8,8 +8,8 @@
  
 const cars = ["Saab", "Volvo", "BMW"]; // this is an array of javascript
 const car = ["Ford", "Kia", "Hundai"]; // this is an array of javascript
-console.log(Array.isArray(cars)); // this is check that is that object is an array or not
 console.log(cars);//printing the log of an array
+console.log(Array.isArray(cars)); // this is check that is that object is an array or not
 cars[0] = "Jaguar";//changing the first element of array or change the first value of array
 console.log(cars[0]);// printing the first value of array after change the array value
 console.log(cars); // print the array log or values
@@ -145,7 +145,14 @@ console.log(kies); // print the all elements of the array with its keys as strin
 let update_cars = cars.with(1, "Mahindra and Mahindra"); // Array  With Method is used to update the old array element value with new element value or replace the new array element with old array value.. 
 console.log(cars); // print the original array with elements
 console.log(update_cars);//print the updated version of cloned array from the orignal.
-console.log(myArrayMin(bie));
+console.log(myArrayMin(bie)); // calling the function which get the minmum element exist as 2 and maximum exist as 90
+const newarray = cars.concat(car); //this method is used to concat two array into new single array with both array values
+console.log(cars.push(car)); // adding car array values into cars array // with this it just not add values into cars array it make it nested array with new level
+console.log(newarray); // print the all values of newarray variable
+console.log([...cars],[...car]);// this is concat the two or more array in a single array with help of spread operator (...(three dot))
+console.log(cars.flat(Infinity)); // this method is used to convert a single level array from multilevel array or nested array.
+
+
 
 /* some array method that are
 
