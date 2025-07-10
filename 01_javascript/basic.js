@@ -158,3 +158,126 @@ console.log(p.toString());
         18	                = += -= etc.	    Assignment operators
         19 (Lowest)	            ,	            Comma operator — multiple expressions together
 */
+
+/* #####################  JavaScript Scope  ########################## 
+
+    The javascript have three types of Scope 
+    1. Global Scope
+    2. Functional Scope (Local Scope)
+    3. Block Scope
+
+    Block Scope { ----- } => inside defined variables into the block have access inside block only. you cant use or access inside defind variables from outside the block   (let , const)
+    Functional Scope : function  function_name(argument if have){-----} => inside the function scope defind variable also have access only inside the function. you cant access those variable from outside the function  
+    Global Scope : global scope is always global and access from any where like inside or outside the block or functional scope.. but condition is that it declare as global 
+                    Variables declared Globally (outside any function) have Global Scope.
+
+    ***** Automatically Global ***
+    If you assign a value to a variable that has not been declared, it will automatically become a GLOBAL variable.
+    const, let, var  name = ""; // this is global variable ...outside the blocks and access anywhere inside the file known as global variable or global scope variable
+    { //this is block
+    </> // access name variable here according to the requirement
+        ---------------------------
+        -------------
+        -------------------------
+      </>
+    }
+    here is an important example that remove your confusion related global scope or variable that would be undefined...then that variable known as which type or category.     
+*/
+
+// +++++++++++++++ Global Scope ++++++++++++++++++++
+{ //start block
+    names = "google.com"; //add value into the undefined variable 
+}//close  block
+{
+    console.log(names); // global variable //print the undefined variable value, technically its not declared any where so we access this variable any where like this example into another block because its a global variable
+}
+
+let stud = "Ravinder"; //global varible defined outside from the block spaces 
+{ //start a block
+    console.log(stud.toUpperCase()); //print the accessed global variable inside the block scope
+} //end of block
+function glob(){ // declare the function and starting functional scope
+    console.log(stud.toLowerCase());  //print the accessed global variable inside the functional block scope 
+}//end of functional scope
+glob(); // calling declared function
+
+
+// ++++++++++++++++++++++++++  Block Scope  +++++++++++++++++++++++++
+
+{//start a block scope
+    let site = "google.com"; //declare and define a variable with a string value , if i would change this declaration key/keyword from let to var,then it treat as global variable like access inside or outside the block and also redefine the value again or modify the value as per requirement, but let and const not do like var.
+    console.log(site); //print the defined variable value
+ }// end of block scope
+
+ //****  console.log(site); //print the block inside defined variable...// but there is getting an error like undefined variable
+
+ function block() //declare or define the new function
+ { //start functional scope
+//****  console.log(site); //print the block inside defined variable...// but there is getting an error like undefined variable
+ } // end of functional scope
+
+ block(); //call the function for run the internal script 
+
+ // **********************  functional Scope  ************************
+
+ function scope(){ // Declare a New Function and Start the functional scope
+
+    let superHeros  = ["Superman","Batman"];
+    console.log([...superHeros]);
+ }
+ scope(); // call the function for run or execute the script that written inside the functional scope related with this function
+
+ { //start the block scope
+  //*****  console.log([...superHeros]); // want to print the functional defined variable, that defined inside the function, but getting error like superHeros (variable name) is not Defined
+ }//end of block scope
+
+ //******* console.log([...superHeros]);// want to print globally the functional defined variable, that defined inside the function, but getting error like superHeros (variable name) is not Defined
+
+
+
+
+
+ /* @@@@@@@@@@@@@@@@@   JavaScript Hoisting   @@@@@@@@@@@@@@@@@@@
+ 
+    Hoisting is JavaScript's default behavior of moving declarations to the top. In JavaScript, a variable can be declared after it has been used. In other words; a variable can be used before it has been declared.
+
+    in simple terms var variable and  a function  is hoist before it declare  and stroed into the allocated memory of compiler.
+    a function is store with its name and the body of the function.
+    and a variable is  reserv the memory that allocated by the compiler but run time it returns output as undefined.
+    
+    in case  of let and const, you cant use or access these variable before its initialize or declare them. they both provide ReferenceError
+ */ 
+hoisted(); // run or execute function smoothly //call the function or Hoist the function before its declare
+console.log(x1); // Undefined //print the variable or hoist the variable before its declare  
+
+//console.log(x2);//cant print the value of x2 becouse the variable is not declared yet and you cant access this variable till its not declared befor its use
+//console.log(x3);//cant print the value of x3 becouse the variable is not declared yet and you cant access this variable till its not declared befor its use
+function hoisted(){ // initilizing or declaring the function
+    console.log(" JavaScript Hoisting"); //print the matter inside console for testing purpose// script of the function that will be executed when function calling
+} // end of the function
+x1 = 45; // initilizing the variable value before declaring the variable
+var x1; // declare the variable
+//x2 = 90; // initilizing the variable value before declaring the variable // but not accessable because its undeclared yet
+let x2; // declare the variable
+const x3 = 60; // initilizing the variable value  with declaring the variable
+
+// JavaScript Initializations are Not Hoisted
+// JavaScript only hoists declarations, not initializations.
+// in simple terms we can say that the function and variable hoist are then possible when its not declared if they are already declared then hoist is not possible.
+// requirement => it gives a freedome to user that you can run before the declare the variable  and the function. some time user write a code a by mistake before declare the variable or function so user can hoist thease function and varables
+
+
+// some examples are 
+
+var xt = 5; // Initialize xt with value
+var yt = 7; // Initialize yt with value
+console.log(xt + " " + yt); //5  7 // print the value of both //and these variable not hoist because they already declared and have value 
+
+
+var xt = 5; // Initialize xt with value
+
+console.log(xt + " " + yt); // 5  undefined // print the value of both variable and xt and yt both are hoisted. 
+// because javascript treats variable as var xt; var yt; then xt =5; yt = 5; then hoist both variables 
+yt = 7; // add a value to undefined variable 
+var yt; // declare or initialize the variable.
+
