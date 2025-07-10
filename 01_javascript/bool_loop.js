@@ -281,7 +281,6 @@ console.log(sets.values());// this return the value of a set object like a array
 console.log(sets.keys()); //  Set have not any key like array because it not use the indexing like array so you can access same result with values or keys from the Set Object. 
 console.log(sets.entries()); //  in javascript set object a method known as entries() is used for create a pair of output or result according to the requirement. like a,a -b,b-c,c and so on.
 
-
 // in padstart method when we select slice positive number then it take how many charcter to be masked before given length.
  // ***//  in First part => mobile length = 10;  slice (10 -4 = 6),pad start means pad or mask charcter in starting of the string ,start from 1st letter to given length = 6 means 1-> 6 // XXXXXX7891
 // ***//   in second part => mobile length = 10;  slice (start(0, end(4))),pad End means pad or mask in last of string, start just after given range like left 0->4  and mask remained charcter like // 1234XXXXXX
@@ -313,34 +312,36 @@ console.log(sets.entries()); //  in javascript set object a method known as entr
     
     const A = new Set(['a','b','c']);// declare a new constant varable with new set object have some values
     const B = new Set(['b','c','d']);// declare a new constant varable with new set object have some values
- 
- {    // start a new scope 
-    let text = ""; //declare a variable with empty string
-    for (const x of A) {//start a for of  loop for get referance variable values Set of A and insert the all values into x variable
-        text += x; // insert the each value of set object from x variable to  text varible one by one;
-    }
+ // there are various methods have to combine or concat the set elements into a new object but we declare main three methods written in below
+{
+    {    // start a new scope 
+        let text = ""; //declare a variable with empty string
+        for (const x of A) {//start a for of  loop for get referance variable values Set of A and insert the all values into x variable
+            text += x; // insert the each value of set object from x variable to  text varible one by one;
+        }
 
-    for (let x of B)//start a for of  loop for get referance variable values Set of A and insert the all values into x variable
-    {
-        text += x;// insert the each value of set object from x variable to  text varible one by one;
-    }
+        for (let x of B)//start a for of  loop for get referance variable values Set of A and insert the all values into x variable
+        {
+            text += x;// insert the each value of set object from x variable to  text varible one by one;
+        }
+        
+        const C = new Set(text);//declare a new set object and insert all values of text variable into this set, this set get only uniqe values from the text variable and ignore the duplicate values 
+        console.log([...C]); // print  a referance variable with sepred operator (create values as like array but actually it as set not array) as new declared set have Uniqe values with concatination of two different sets;
+    } // end of scope
+
+    { // start a new scope
+        const C = new Set([...A, ...B]); // declare a new variable as a reference variable of a set object with two sets values that get only uniqe values from both sets and ignore the duplicate values.  
+        console.log([...C]); // print  a referance variable with sepred operator (create values as like array but actually it as set not array) as new declared set have Uniqe values with concatination of two different sets;  
+    } // end of scope
     
-    const C = new Set(text);//declare a new set object and insert all values of text variable into this set, this set get only uniqe values from the text variable and ignore the duplicate values 
-    console.log([...C]); // print  a referance variable with sepred operator (create values as like array but actually it as set not array) as new declared set have Uniqe values with concatination of two different sets;
-} // end of scope
+    // new chapter related wit set known as Set Logic
+    // new script with union method
+    { // start a new scope related with union
+        const C = A.union(B); // concatinate set A with Set B with unique methode, that store values into another new variable with help of union javascript method, that is used to grab uniqe values from the both sets   
+        console.log([...C]); //abcd // print the new declared variable C all values with sepred operator.
+        //*****            // union means set 1 + set 2 = set 3 (all values of set 1 and set 2 then grab uniqe values from both sets and then store uniqe values into set 3 or variable 3 )
 
-{ // start a new scope
-    const C = new Set([...A, ...B]); // declare a new variable as a reference variable of a set object with two sets values that get only uniqe values from both sets and ignore the duplicate values.  
-    console.log([...C]); // print  a referance variable with sepred operator (create values as like array but actually it as set not array) as new declared set have Uniqe values with concatination of two different sets;  
-} // end of scope
- 
-// new chapter related wit set known as Set Logic
-// new script with union method
-{ // start a new scope related with union
-    const C = A.union(B); // concatinate set A with Set B with unique methode, that store values into another new variable with help of union javascript method, that is used to grab uniqe values from the both sets   
-    console.log([...C]); //abcd // print the new declared variable C all values with sepred operator.
-     //*****            // union means set 1 + set 2 = set 3 (all values of set 1 and set 2 then grab uniqe values from both sets and then store uniqe values into set 3 or variable 3 )
-
+    }
 }
 
 {   // start a new scope related with intersection method (Grab common values or duplicate or repeted values)

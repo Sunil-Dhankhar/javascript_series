@@ -127,14 +127,14 @@ console.log(frms);// print the array elemets that each value/element have X^3 or
 /* Array keys Method */
 
 let kies = ""; // initilize an empty variable 
-cars.keys().forEach(function(vals){ // start keys method with foreach function for get the array elements keys from the the array 
+[...cars.keys()].forEach(function(vals){ // start keys method with foreach function for get the array elements keys from the the array 
     kies += "\n"+ vals + " => " + cars[vals] + " \n" ; // assign and reassign the array elements keys with array values
 }) ;
 console.log(kies); // print the value assign varible as string;
 
 /* Array entries Method */
 
-cars.entries().forEach(function(vals){ //call back freach function with entries method that belongs to array
+[...cars.entries()].forEach(function(vals){ //call back freach function with entries method that belongs to array
     kies += "\n"+ vals + "\n"; // assign and reassign the keys and values both into the variable. like (0,saab)
 });
 
