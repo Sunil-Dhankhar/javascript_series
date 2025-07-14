@@ -271,3 +271,69 @@ console.log(cars.flat(Infinity)); // this method is used to convert a single lev
                                                                     }
 
         */
+
+
+
+//  @@@@@@@@@@@@@@@@@@@@@@@@  Java Script Objects  @@@@@@@@@@@@@@@@@@@
+
+// inside the { key:value } curly braces we have find or declare the data in form of pair like key and value called as objects and its properties 
+
+// objcet constructor functions  
+//      when we create a function then we define or declare a new object with same name as function menas object new keyword and function name should be same if same then we say that that function is created a object with new keyword that exact name like function and then it call the function and runc the script, that the function hold.
+
+// for example
+
+{ // new scope is stared here 
+    function myycar (carname, model, year) // created a function here with argument
+    {
+        this.name = carname; //settitng the car name into temprary value
+        this.brand = model; //settitng the car model into temprary value
+        this.year = year; //settitng the car mfd year into temprary value
+        
+    }
+    const car_care = new myycar("Scorpio", "Mahindera and Mahindera", 2024); // a new object is created  with function name called as object function constructor
+
+    console.log(car_care.name); // print the constructor function object first value 
+    console.log(car_care.brand); // print the constructor function object second value
+    console.log(car_care.year);// print the constructor function object third value
+} // end of local scope
+
+import {mycar} from "./imp.js"; // importing content or script from another file as per requirement // here we grab or importing a function from another file according to our requirement. we want create a new object with dynamic value get from another file with import export method.
+{ // start a local scope for code or script uniqeness
+    
+    const carcare = new mycar("Helux", "Toyota", 2025); // create a new object and after that we create a object constructor from imported file or function and with this object we call the function using pass the arguments and then in the function we set the values into temprary object variables. 
+    console.log(carcare.name); // print the function first argument value that is stored in temprary variable named this.name; 
+    console.log(carcare.brand);// print the function second argument value that is also stored in temprary variable this.brand;
+    console.log(carcare.year);// print the function third argument value that is also stored in temprary variable this.brand;
+}
+
+// ****** javascript object prototype *****
+// The prototype of a JavaScript object is a hidden object
+// that stores additional (shared) properties and methods.
+// If a property or method is not found directly on the object,
+// JavaScript looks for it in the prototype chain.
+
+mycar.prototype.price =function (){ // declare a function into prototype method for easy access the internal property for inharit it easely.
+     console.log(this.name + "  Ex. Showroom Price is 50 lac"); // we have a add new property with value in to the predefined function mycar with help of prototype
+}
+const carecar = new mycar("Endever", "Ford", 2015);
+const carcare = new mycar("Innova crysta Hybrid Technology", "Toyota", 2021); // created a new object that is call the constructor function.
+carcare.price(); // print the new added property into the constroctor object function. 
+carecar.price(); // print the new added property into the constroctor object function. 
+
+carcare.name = "Fortuner Legender";
+//Object.freeze(carcare);
+// carcare.name = "Landrover";
+// carcare.brand = "Rangerover";
+// console.log(carcare);
+
+
+// some basic objects methods of javascripts
+
+Object.assign(person1, person2); // Assign Source to Target // it assign or copy the all matched key value of person2 into person1 object means person1 object get all matched value from person2
+
+Object.entries(); // This method returns an array of the key/value pairs from the object.
+
+
+
+
