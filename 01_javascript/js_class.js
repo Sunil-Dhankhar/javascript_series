@@ -1,7 +1,7 @@
 /* @@@@@@@@@@@@@@@@@@ Java Script Classes */
 
 class cars { // declare or define a class 
-    (carname, mfdyear)// create a constructor that is a default method of the javascrit classes..this call automatically when the class is called. in simple terms we say that this metod is call each time when the class is called.
+   constructor (carname, mfdyear)// create a constructor that is a default method of the javascrit classes..this call automatically when the class is called. in simple terms we say that this metod is call each time when the class is called.
     { // constructor scope is start // this is also know as functional scope
         this.name = carname; // constructor received first property as carname, store into object referance variable this.name(temprary variable).
         this.year = mfdyear; // constructor received another property as mfdyear, store into object referance variable this.year(temprary variable).
