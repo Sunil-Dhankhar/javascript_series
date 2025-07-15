@@ -1,7 +1,7 @@
 /* @@@@@@@@@@@@@@@@@@ Java Script Classes */
 
 class cars { // declare or define a class 
-    constructor(carname, mfdyear)// create a constructor that is a default method of the javascrit classes..this call automatically when the class is called. in simple terms we say that this metod is call each time when the class is called.
+    (carname, mfdyear)// create a constructor that is a default method of the javascrit classes..this call automatically when the class is called. in simple terms we say that this metod is call each time when the class is called.
     { // constructor scope is start // this is also know as functional scope
         this.name = carname; // constructor received first property as carname, store into object referance variable this.name(temprary variable).
         this.year = mfdyear; // constructor received another property as mfdyear, store into object referance variable this.year(temprary variable).
@@ -64,3 +64,18 @@ console.log(ncar); // print or access the imported object property.
 
 // convert the json data into javascript objects
 //       JSON.parse(text); // this is the syntax that is used to convert the json data into the javascript object for easly aceess the properties of json object or javascript object that is converted from json format to javascript object format.
+
+
+/* class students {
+    constructor(name, year){
+        this.name = name;
+        this.year = year;
+    }
+    age()
+    {
+        let dates = new Date();
+        return dates.getFullYear() - this.year;
+    }
+}
+
+ */

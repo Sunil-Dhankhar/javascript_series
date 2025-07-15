@@ -278,7 +278,7 @@ console.log(cars.flat(Infinity)); // this method is used to convert a single lev
 
 // inside the { key:value } curly braces we have find or declare the data in form of pair like key and value called as objects and its properties 
 
-// objcet constructor functions  
+//  @@@@@@@@@@ objcet constructor functions  @@@@@@@@@@@@@  
 //      when we create a function then we define or declare a new object with same name as function menas object new keyword and function name should be same if same then we say that that function is created a object with new keyword that exact name like function and then it call the function and runc the script, that the function hold.
 
 // for example
@@ -329,11 +329,68 @@ carcare.name = "Fortuner Legender";
 
 
 // some basic objects methods of javascripts
+let person1 = {name:"amit"}; let person2 = {name:"sumit"};
+let stud = (["name", "amit"], ["class", "BCA"]);
+//Object.assign(person1, person2); // Assign Source to Target // it assign or copy the all matched key value of person2 into person1 object means person1 object get all matched value from person2
 
-Object.assign(person1, person2); // Assign Source to Target // it assign or copy the all matched key value of person2 into person1 object means person1 object get all matched value from person2
+//Object.entries(person1);// Returns object key-value in Pair // This method returns an array of the key/value pairs from the object. means that this method returns object properties in like method of array in form of key and value.
 
-Object.entries(); // This method returns an array of the key/value pairs from the object.
+//Object.values(person2); // Returns object values only without key // this method is similar to Object.entries(), but this returns a single dimension array of the object values means this method returns an array of the object's values only, without the keys.
 
+//Object.keys(person2); // Returns object keys only without values // this method is similar to Object.values(), but this returns a single dimension array of the object values in form of object keys only without values means this method returns an array of the object's Keys only, without the values.
 
+//Object.fromEntries(stud);// convert array values into object in form of key-value // This method in JavaScript is used to create an object from an array of key-value pairs. in simple term it convert the array object into js object with key-value pair. this method is used for create an object from an array with key-value..property
 
+//Object.groupBy(); // create a new object from predefined array object and group them on based of condition. // Object.groupBy() method groups elements of an object according to string values returned from a callback function. in simple terms we can say that it create a objects of groups depending on the cocndition. 
+        //for example =>
 
+            const students = [ // declare a new variable and create an array inside the declare variable and convert this variable into the array object.
+                                { name: 'Amit kanojia', grade: 'C' , marks:80 }, //insert or declare objects inside the array with keys and values
+                                { name: 'Neha kadian', grade: 'A' , marks:95 }, //insert or declare objects inside the array with keys and values
+                                { name: 'Raj kumar', grade: 'B'  , marks:91 }, //insert or declare objects inside the array with keys and values
+                                { name: 'Simranjeet channi', grade: 'B', marks:90 } //insert or declare objects inside the array with keys and values
+                            ];
+            
+            // first method // based on grade system
+            const groupes = Object.groupBy(students, student => student.grade); // create groups of object values depending on its grade system with object grade value..and store groups in a variable
+
+            console.log(groupes); // print the all groups that are created by group object method based on grade system, where grade is equal then all properties of two or more objects are stored in same group other wise create a new group.
+            
+            // second method // based on marks if marks greater then given range then add into the group first group else other wise add it into another group
+       
+            function excell({ marks }) // Declare a new function that takes an object as an argument and destructures the 'marks' property
+            {
+                return marks > 90 ? "ok" : "low"; // Check the 'marks' value: if greater than 90, return "ok", otherwise return "low"
+            }
+
+            let result = Object.groupBy(students, excell); // Create a new object by grouping the 'students' array based on the return value of the 'excell' function, then store this object in a new variable
+
+            { // Start a new block scope
+                let txt = ""; // Declare a new string variable
+                txt += "This group of students is Excellent"; // Store a string message in the 'txt' variable
+                for (let [o, p] of result.ok.entries()) // Start a 'for...of' loop using the 'entries()' method, which returns key-value pairs as arrays
+                { // Start of 'for' loop block
+                    txt += "\n" + p.name + " = " + p.marks + ", " + p.grade; // For each entry, append student details (name, marks, grade) as a formatted string to 'txt'
+                } // end of 'for' loop block 
+                console.log(txt); // Print the final string stored in 'txt' to the console
+            }// end of block scope
+
+            { // Start a new block scope
+                let txt = ""; // Declare a new string variable
+                txt += "This group of students is Average";// Store a string message in the 'txt' variable
+                for(let [y, x] of result.low.entries())// Start a 'for...of' loop using the 'entries()' method, which returns key-value pairs as arrays
+                { // start a 'for' loop block
+                    txt += "\n"+x.name+ " = " + x.marks+ ", "+ x.grade;// For each entry, append student details (name, marks, grade) as a formatted string to 'txt'
+                }// end of 'for' loop block 
+                console.log(txt);// Print the final string stored in 'txt' to the console
+            }// end of block scope
+
+// JavaScript for...in Loop 
+    // javascript for in loop returns the object keys and this key iterate the value of key.. i have mentioned an example related to this like 
+    // Iteration means extract property from the object one by one        
+    const obj = { a: 1, b: 2, c: 3 }; //declare an object with pair of keys and values
+
+    for (const key in obj) { // start a 'for...in' loop that extract the object properties keys //start of scope of for in block loop 
+    console.log("Key:", key);        // 'a', 'b', 'c' in each iteration // print all the keys of mentioned object.
+    console.log("Value:", obj[key]); // 1, 2, 3 respectively// print all values of object respectively the object key.
+    } // end of dor in loop block scope
