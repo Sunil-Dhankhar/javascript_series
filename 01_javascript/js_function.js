@@ -171,3 +171,98 @@ let boundDetail2 = person.detail.bind(person2); // Create a bound function where
 console.log(boundDetail1()); // Output: "Sudhir Gulia is a Advocate"
 console.log(boundDetail2()); // Output: "Nikhil Chauhan is a Medical Representative"
 
+
+
+// @@@@@@@@@@@@@@@ callback function @@@@@@@@@@@@@@@@@@@@@@@@
+
+// callback function, where one function has to wait for another function (like waiting for a file to load). known as callback function.
+// simple function is  more easy as per callback function,but simple function is more lengthy if multiple condition exist, then you create differnt differnt condition or functions for each condition..
+// here is major differnce between call back function and regular function.
+// in callback function you, create a function for just 1 time and call it according to your condition as per requirement, with jsut a small modification in calling method and you got result 
+
+// i have mentioned multiple example of it.
+
+const myNumbers = [4, 1, -20, -7, 5, 9, -6]; // declare a array  with values
+
+//  @@@@@@@@@@@@@@@@@@   with call back function 
+
+let mynums = removeNeg(myNumbers, (x) => x >=0); // declare  a callback function (arrow function) inside the removeNeg function that means after call the removeNeg function call it call the callback function and check condition.  
+console.log(mynums); // print the result of positive numbers that is filtered by callback function.
+
+let news = removeNeg(myNumbers, (x) => x <=0);// call back function inside the main function.
+console.log(news); //print negetive number
+
+news1 = removeNeg(myNumbers, (x) => x % 2 == 0);// call back function inside the main function, who devision by 2 
+console.log(news1); //print divisible by 2 numbers
+
+function removeNeg(numbers, callback){  // with call back function
+    const post = []; // declare a new array for positive number
+    const neg = []; // declare a new array for negtive number
+    for(const y of numbers) // start a for of loop start
+    {   
+       if(callback(y)) // check the value is negtive or positive. if value positive then return true else false
+        {
+            post.push(y);// insert the positive value into post array
+        }
+        else{
+            neg.push(y);// insert the negtive value into neg array
+        } 
+    }
+    return post; // return post array
+    //return neg;
+    
+}
+
+// @@@@@@@@@@@@@@@ without call back function
+// simple but not reuseble for every condition..this works for one condition.. if we convert it as per multiple condition then it become to lengthy because each condition if fill inthe function and then check it again and again when it call..
+//when it become lengthy then its working to slow as compare to callback function..
+ 
+console.log(removeNegNum(myNumbers )); // call the regular function by passing the arguments as array values.
+
+function removeNegNum(numbers) {// without call back function get negtive and positve number sepratly
+    const post = []; // declare a new array for positive number
+    const neg = []; //declare a new array for negtive number
+    
+    for(const y of numbers) // start a for loop for each element of array
+    {    (y > 0)? post.push(y):neg.push(y); // check value positive or negtive if positive then put into post array else in negtive arr
+    }
+    
+    return post;
+    //return neg;
+}
+// here you see we get only positive numbers if we requires also negtive numbers then in regular function we call this function with different name and return the neg array from this script..its become to lengthy one by one for each condition
+// above mentioned call back function section we define various example for get positive , negtive, divisibal by 2 numbers examples with just a littel changes in calling method and function is still same for each condition, just change calling method and got result according to calling method.
+
+// #############          Asynchronous JavaScript    ##############
+
+// that method of javascript that take time for execution, they not execute immediatly after preseted time called Asybchronous method.
+// a simple and basic example of this is written in below
+
+setTimeout(myFunctions, 3000); // this is working  in also node js environment // call the function after 3 seconds
+
+function myFunctions() // declare a function
+{
+    console.log("Erosteps Pvt Ltd.");// print the string into console panel.
+}
+
+// another example of this method
+
+console.log("start"); //print the string  when file is load
+
+setTimeout(() => { //print the string after call the callback function in 3 seconds when the file is load
+    console.log("Welcome to the Erosteps Pvt. ltd");
+},3000); // this call the function once after the given time 
+
+console.log("end");// print the string immidiatly when file is load
+
+
+// another example of this method for a clock 
+
+setInterval(myfuns, 1000); // this is another method of javascript , this is used for call the function again and again after given time 
+
+function myfuns() // declare the function
+{
+    const dats = new Date(); // declare the date object
+    let vars = dats.getHours()+" : "+dats.getMinutes()+" : "+dats.getSeconds(); // create a string with concatinate the multiple objects values and add this into the new declared variable
+    console.log( vars); // type of String // print the string value. (Digital clock ) 
+}
