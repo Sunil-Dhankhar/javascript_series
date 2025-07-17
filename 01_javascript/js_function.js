@@ -258,11 +258,82 @@ console.log("end");// print the string immidiatly when file is load
 
 // another example of this method for a clock 
 
-setInterval(myfuns, 1000); // this is another method of javascript , this is used for call the function again and again after given time 
+//setInterval(myfuns, 1000); // this is another method of javascript , this is used for call the function again and again after given time 
 
 function myfuns() // declare the function
 {
     const dats = new Date(); // declare the date object
     let vars = dats.getHours()+" : "+dats.getMinutes()+" : "+dats.getSeconds(); // create a string with concatinate the multiple objects values and add this into the new declared variable
-    console.log( vars); // type of String // print the string value. (Digital clock ) 
+    console.log( vars); // type of String // print the string value. (Digital clock ) // if run then it keep busy to terminal..by call the function again and again
 }
+
+
+// ##############   Javascript Promise Functions   ###################
+
+// Another type of asynchronous function in JavaScript is the Promise function.
+// A Promise is an object that allows you to delay the execution of a function, such as running it after a given time (e.g., 2 or 3 seconds).
+// The Promise object represents the eventual completion (success) or failure (error) of an asynchronous operation.
+// It is commonly used for tasks like fetching data or making API calls etc.
+// A Promise has three states: Pending -> Fulfilled (Success) -> Rejected (Error).
+// The Promise object holds the result of the operation (either success data or an error).
+// After creating a Promise object, you can handle its result using the .then() and .catch() methods.
+// If the Promise is fulfilled, the .then() method is called with the result.
+// If the Promise is rejected, the .catch() method is called with the error.
+
+// for example :->
+    let names = "Khan"; // Declare a string variable with a string value.
+    let nami = ""; // Declare an empty string variable.
+
+    function meybe(names, times) { // Declare a function with arguments.
+        return new Promise(function(resolve, reject) { // Create a Promise object with an internal function that takes two arguments: resolve and reject.
+            setTimeout(() => { // Create an arrow function used as a callback, with a time delay.
+                if (names != "") { // Check the condition: if the argument is not an empty string, then execute the block.
+                    resolve("My name is " + names + " and I am a Teacher."); // Pass a success message to the resolve function.
+                } else { // If the argument is an empty string, execute this block.
+                    reject("Something went wrong."); // Pass an error message to the reject function.
+                }
+            }, times); // Execute this callback function after 4 seconds (4000 milliseconds).
+        }); // End of the Promise object and its internal function.
+    } // End of the main function.
+
+    meybe(names,tm = 3500) //call the function with passing the arguments ( first belongs to name and another is belongs to the time in miliseconds)
+    .then(data => console.log(data)) // Print the success message if the Promise is resolved.
+    .catch(err => console.log(err)); // Print the error message if the Promise is rejected.
+
+    meybe(nami, tm = 3900) //call the function with passing the arguments ( first belongs to name and another is belongs to the time in miliseconds)
+    .then(data => console.log(data)) // Print the success message if the Promise is resolved.
+    .catch(err => console.log(err)); // Print the error message if the Promise is rejected.
+
+// @@@@@@@@@@@ JavaScript Async  @@@@@@@@@@@@@@@@
+
+// `async` is a powerful JavaScript keyword that helps you write asynchronous code in a cleaner and more readable way.
+// It allows you to create delayed or non-blocking functions without using callbacks, .then(), or .catch() directly.
+// It is useful when you want to pause execution until the result of an asynchronous operation is received — like API calls, file reads, database access, or setTimeout delays.
+// An `async` function always returns a Promise, even if you return a simple value.
+// Inside an `async` function, you can use the `await` keyword to pause the function until a Promise is resolved or rejected.
+// `await` can only be used inside an `async` function; using it outside will cause a syntax error.
+// You can also use `try...catch` inside async functions for better error handling instead of chaining .catch().
+
+// ann Example of Async function :=>
+
+ async function calls() {
+    // Define an asynchronous function to call the 'meybe' function.
+
+    console.log("⏳ Please wait... " + names +" Sir"); // Inform the user that the process is starting.
+
+    try {
+        // Use try/catch to handle potential errors from the async function.
+
+        const firsts = await meybe(names, 4500); // Await the first promise with valid input.
+        console.log(firsts); // Log the successful result.
+
+        const second = await meybe(nami, 4000); // Await the second promise which should fail.
+        console.log(firsts, second); // If the second call somehow succeeds, log both results.
+
+    } catch (error) {
+        // Catch any rejected promises and log the error message.
+        console.log(error);
+    }
+}
+
+calls(); // Invoke the async function to run the code.
