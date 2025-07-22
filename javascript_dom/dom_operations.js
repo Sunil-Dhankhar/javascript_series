@@ -249,3 +249,28 @@ ontouchend
             └── p (Element Node)
                 └── "This is a paragraph." (Text Node)
 */
+
+/* Now in below i explain the Nodes and its Relationships with other nodes.
+
+    ### From the HTML above you can read: ###
+
+    // <html> is the root node and Parent Node and it has no parents.
+    // <html> is the parent of <head> and <body>
+    // <head> is the first child of <html>
+    // <body> is the last child of <html>
+   
+    // @@@@@  and: @@@@@
+
+    // <head> has one child: <title>
+    // <title> has one child (a text node): "DOM Tutorial"
+    // <body> has two children: <h1> and <p>
+    // <h1> has one child: "DOM Lesson one"
+    // <p> has one child: "Hello world!"
+    // <h1> and <p> are siblings
+    // Example: <body> has two children — <h1> and <p>
+    // But in general, <body> can contain many types of elements like:
+    // <div>, <span>, <a>, <embed>, <img>, <input>, <textarea>, <strong>, <b>, etc. these are not children of body. these represent what kind of element is allowd in html document.
+
+*/
+
+
