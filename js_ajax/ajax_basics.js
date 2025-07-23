@@ -87,4 +87,22 @@
             // Async request is send request to server and run further code  to in background, not matter that server response is received or not rescived. /// recommended  xhttp.open("GET" "url", true);
 
     
+    // @@@@@@@@@ Ajax Server Response @@@@@@@@@
+
+    // when a Ajax request is initilized for get or post data in javascript then server return a response that is hold by the System Browser with help of Web Api and browser internal event loop.
+    // there are two basic methods for get response of server.
+    // 1.) response.Text    => usally used for get response in  like Plain text, string, json data, HTML.
+    // 2.) response.XML     => usally used for get response in like XML Data or XML objects.     
+
+
+    // @@@@@@@ getAllResponseHeaders() Method   @@@@@@@@@@@@
     
+    // getAllResponseHeaders() Method returns all header information from the server response. means it returns all headers information to user.
+    // like length, server-type, content-type, last-modified, etc.  
+    
+    
+    // @@@@@@@ getAllResponseHeader() Method   @@@@@@@@@@@@
+
+    // getAllResponseHeader() Method return a specific header information from the server response. means it return specific header information to user.
+    // like length, server-type, content-type, last-modified, etc.      
+            // example =>  this.getResponseHeader("Last-Modified");
