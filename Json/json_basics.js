@@ -233,15 +233,15 @@
 
     //  for example :->
 
-    const xhttp = new XMLHttpRequest();
-    xhttp.onload = function(){
+   const xhttp = new XMLHttpRequest(); // define a new object for XMLHttpRequest for server request
+    xhttp.onload = function(){ // define event function that run or execute when event perform like when response received then this event and function both execute.
         let obj = JSON.parse(this.responseText); // if its object in string
         const myArr = JSON.parse(this.responseText); // if its array in string
-        console.log(obj.name);
-        console.log(myArr[0]);
-    }
-    xhttp.open("GET","demo.php", true);
-    xhttp.send();
+        console.log(obj.name);//print object property as value if response contain a object in form of string
+        console.log(myArr[0]); // print array value according to given index if response contain a array. in form of string
+    }//end of callback function
+    xhttp.open("GET","demo.php", true); // create a Get data from server, request through ajax call on server. 
+    xhttp.send(); // obj.send method is used to send initilized request on server for get data in response from the server.
 
 
     // json with php 
