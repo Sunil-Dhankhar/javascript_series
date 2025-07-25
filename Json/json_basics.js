@@ -233,7 +233,11 @@
 
     //  for example :->
 
+<<<<<<< HEAD
    const xhttp = new XMLHttpRequest(); // define a new object for XMLHttpRequest for server request
+=======
+    const xhttp = new XMLHttpRequest(); // define a new object for XMLHttpRequest for server request
+>>>>>>> fed52fa10db7fd5d3eec2b00d4b01facf8ddc512
     xhttp.onload = function(){ // define event function that run or execute when event perform like when response received then this event and function both execute.
         let obj = JSON.parse(this.responseText); // if its object in string
         const myArr = JSON.parse(this.responseText); // if its array in string
