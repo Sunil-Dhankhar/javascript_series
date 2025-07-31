@@ -28,7 +28,7 @@ const _ = require('underscore'); // connect with underscore Library
     let arr2 = [1, 2, 6, 3, 4, 8, 12]; // define an Array with some values
     const fruits = new Map([["apple" , 500], ["mango", 700], ["orange", 300], ["grapes", 600]]); // declare a new variable with Map Object have multiple pair values 
     
-    let list = _.map(Array.from(fruits),([key, value]) => { // define map method for destructure map object that containmultiple pair of arrays, destructure each array pair and then apply a call back function for extract the each key and value form the array pair 
+    let list = _.map(Array.from(fruits),([key, value]) => { // define map method for destructure map object that contain multiple pair of arrays, destructure each array pair and then apply a call back function for extract the each key and value form the array pair 
         return `${key} is ${value} KG`;     // return the extracted value from the array according to your required Structure. 
     },);
     console.log(list);//print the returned data as like => [ 'apple is 500 KG',  'mango is 700 KG',  'orange is 300 KG',  'grapes is 600 KG']
@@ -507,8 +507,149 @@ const _ = require('underscore'); // connect with underscore Library
        let nums = `Calculating the square of ${x} is = `;// define a new variable with string value
        console.log( nums + x * x); // print the nums variable value with x * x calculated value in form of string
     }
-    let num = _.throttle(multi, 5000) //the _.throttle method call to given function after a specific time delay in miliseconds. during time interval if you call it again then this method ignore your call because it have control to stop/ignore unwanted calls.
+    let num = _.throttle(multi, 500) //the _.throttle method call to given function after a specific time delay in miliseconds. during time interval if you call it again then this method ignore your call because it have control to stop/ignore unwanted calls.
     num(12); // 144 //called immediately
     num(15); //ignored due to time interval
     num(25); // 625 // call if the first time interval process is complete
+
+    // If you need to cancel a scheduled throttle, you can call .cancel() on the throttled function.
 }
+
+{  //_.debounce(function, wait, [immediate]): The _.debounce function is similar to the setTimeout method in that it delays the execution of a function. In simple terms, it controls how often a function is called by introducing a time delay, which helps prevent excessive or unnecessary calls. If a function call is in progress and a new one is triggered, the previous call is canceled, and the new one is scheduled to execute after the specified delay. 
+    // if you provide the third optional argument as true or false, then true means that call the functin immediately and then after recall it after delay time, alse it controle the delay to call the function untill time is not complete.
+    function multi(x) {//define the function with parameter
+       console.log(`Running calculation for ${x}`);// print the parameter value with text/string line
+       let nums = `Calculating the square of ${x} is = `;// define a new variable with string value
+       console.log( nums + x * x); // print the nums variable value with x * x calculated value in form of string
+    }
+    let num = _.debounce(multi, 3000);
+    console.log(num(50)) //output =>    Running calculation for 50
+                        // Calculating the square of 50 is = 2500
+
+    // This is commonly used in search bars that make API calls based on user input.If you use an API method without the debounce function, it will call the API every time a key is pressed. This results in multiple unnecessary requests to the server, creating unnecessary load.
+    // The debounce function plays an important role here :- It waits until the user has stopped typing for a specified delay (e.g., 5 milliseconds), and then it triggers the API call.
+    // This reduces the number of requests sent to the server, improving performance and efficiency.
+
+}
+
+{   // _.once(function) => The _.once method ensures that a function is called only one time. Even if you try to call the function multiple times, only the first call will be executed. All subsequent calls will be ignored.
+    // after once call, if it receive another call or multiple call then it ignore the all calles and return the reserved or cache result.
+    function multi(y) {//define the function 
+        let called = false; // set a variable as a flag with false value by default
+        let result; //declare a undefined variable;
+        return function (x){ // start a retun function with param
+            if(!called){ //check condition that called flag is vailable or not, if not then move to internal part of the conditional scope 
+                called = true; //set called flag as true.
+                console.log(`\n Running calculation for ${x}`);// print the parameter value with text/string line
+                let nums = `Calculating the square of ${x} is = `;// define a new variable with string value
+                result =  nums + x * x; // store the nums variable value with x * x calculated value in form of string into result (undefined ) variable.
+            } //end of if statement scope
+        return result; // return result as fresh call value or repeted call value from cache.
+        };
+
+    }
+    const wrapped = multi();      // return inner function
+    const num = _.once(wrapped);  // apply _.once on inner
+    
+    console.log("\n"+ num(10)) //output =>       Running calculation for 10
+                        //            Calculating the square of 10 is = 100   
+    console.log(num(20)) // output => Calculating the square of 10 is = 100
+    console.log(num(30)) // output => Calculating the square of 10 is = 100 
+    console.log(num(40)) // output => Calculating the square of 10 is = 100 
+    console.log(num(50)) // output => Calculating the square of 10 is = 100 
+
+
+}
+
+{   // _.after(count, function) => The _.after method ensures that the main function is called. only after it has been invoked a specified number of times.
+        // For example, if you set it to run after 3 calls, the main function will execute only. after being called three times.
+        // If fewer calls are made (e.g., only 2 instead of 3), the main function will not execute. because the condition hasn't been met.
+
+    function fetchUserData(callback) { // define new function 
+       setTimeout(() => { // setTimeout function for call the function after delay
+            console.log("User data loaded"); // print the message when function is called
+            callback(); // call the defined function 
+        }, 2000); // set delay time in miliseconds
+    }
+
+    function fetchPosts(callback) { // define new function 
+        setTimeout(() => { // setTimeout function for call the function after delay
+            console.log("Posts loaded"); // print the message when function is called
+            callback(); // call the defined function
+        }, 5500); // set delay time in miliseconds
+    }
+
+    function fetchComments(callback) { // define new function 
+        setTimeout(() => { // setTimeout function for call the function after delay
+            console.log("Comments loaded"); // print the message when function is called
+            callback(); // call the defined function
+        }, 1500); // set delay time in miliseconds
+    }
+
+    // Run final function only after all 3 async tasks complete
+        const onAllLoaded = _.after(3, function () { // The _.after function checks whether the specified number of calls (e.g., 3) has been made. If all the required calls are completed, it executes the callback function. Otherwise, it ignores the callback and does not execute it.
+        console.log(" All content loaded, rendering UI..."); //print the string after callback function
+    });
+
+    fetchUserData(onAllLoaded); // call the functioin and pass callback function as argument
+    fetchPosts(onAllLoaded); // call the functioin and pass callback function as argument
+    fetchComments(onAllLoaded); // call the functioin and pass callback function as argument
+
+}
+
+{   // _.before(count, function) => The _.before method runs or executes the callback function until (count - 1) times. After that, it ignores any further calls to the callback function.
+
+    const save = _.before(5, function(x) {// _before method execute funcion untill count-1, after that ignore, count = 5 and function call is = 5 -1 = 4. means this function call only 4 time. 
+        console.log(`\n calling Function ${x} time  and Saving data ... thankyou for call \n`); // print  the string.
+    });
+
+    for(let i=1; i<10; i++) { // start for loop staring from 0 and end on when i = 10;
+        save(i);  // Will print "call Function (time = value of i) and Saving data ... thankyou for call" only first 4 times
+    }
+}
+
+{ // _.wrap(function, wrapper) => The _.wrap method basically provides functionality to wrap a function within another function. The wrapping function controls when the wrapped function is called.
+    
+    function later(animName) // initilize a new function with parameter
+    {
+        console.log(`Last Sunday, we went to the zoo and saw a ${animName}. It was a beautiful animal with striking white fur and piercing blue eyes. We watched it walk gracefully around its enclosure, and it was one of the most exciting parts of our visit.`);
+         // print the string with param value.
+    }
+
+    let callbacks =_.wrap(later, (origin, active) => { // The _.wrap method wraps an external function within a custom wrapper function. The wrapper function controls how and when the original function is called, and returns the result accordingly.
+            console.log( "\n Hello Sam, today is very Hot. will you come with me at Zoo \n Sam reply : No," ); // print the string when this call back function is calling
+            return origin(active); // Returns the result after calling the original function with a parameter
+        }) // end of call back function
+    _.delay(callbacks, 6000, "White Tiger"); // Calls the wrapped function after a delay of 6 seconds (6000 milliseconds) using the delay method, and passes the argument as well
+
+}
+
+// _.negate(predicate) => Creates a function that returns the opposite of the given predicate's result. If the predicate returns true, the new function returns false, and vice versa.
+// if returned result is true then it turn into false and if return false then it turn into true.
+
+{ // _.compose(...functions) => This method is used to create a chain of functions, controlling the order in which they are called, where the output of one function is passed as the input to the next.
+
+    const f1 = (x) => {return (x + 1);}; // declare a variable with arrow function 
+    const f2 = (x) => {return (x - 2);}; // declare a variable with arrow function 
+    const f3 = (x) => {return (x / 3);}; // declare a variable with arrow function 
+    const f4 = (x) => {return (x * 4);}; // declare a variable with arrow function 
+    const f5 = (x) => {return (x * x);}; // declare a variable with arrow function 
+    let controls = _.compose(f5,f4, f1, f2, f3) // The compose function is used to create a chain of multiple functions, where the return value of one function becomes the argument of the next function, allowing control over the order in which the functions are executed.
+    console.log(controls(15));  // output => 256 => 15 / 3 = 5 - 2 = 3 + 1 = 4 * 4 = 16 * 16 = 256 
+}
+
+{  // _.restArguments(function, [startIndex]) => This method collects all arguments starting from the given index into a new array, which is then passed as a single argument to the function.
+  // in Simple terms we can say that, This method allows a function to accept a variable number of arguments; by default, arguments are assigned starting from index 0, so if a function has parameters like (a, b, ...rest), the first two values go to a and b, and the remaining arguments are collected into the "rest" array.
+
+
+    let arra = [10, 20, 30, 40, 50] // initilize a array into new variable 
+    const func3 = _.restArguments((a, rest) => { // the restArguments function manupulate the passing argumnets according to order and remaining array moved into rest array variable.
+    console.log("a =", a); // print index 0th value as passing value a = 10
+        console.log("rest =", rest); // print all remaining value into the rest variable like = [ 20, 30, 40, 50] 
+    });
+
+    _.delay(func3, 7000, ...arra); //call the callback function after given time delay and pass a array using spread operator.
+}
+
+
+
