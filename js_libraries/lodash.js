@@ -57,3 +57,31 @@ const _ = require('lodash', 'underscore');
     console.log(_.dropWhile(arr, (user) => user.active !== false));    //[{user:'Ammy', active: false }, { user: 'Diljeet', active: false } ] // in this example you see that while the condition is true it removes the elements from the array and when the condition is false it stops and exit from the loop and returns all remained array as data.
 }
 
+{ // _.functions(object) => this method is used to get all function name from the object. means it returns all methods name from a perticuler object. this method returns only owns method not parent or inherit function property or name.
+    const trek = { // declare an objects with its property
+        name : "Spity vally", // properties of main object 
+        locs : "Himachal Pardesh, India" ,
+        pack_price:14999+"/-",
+        extra : function (){ // declare a function inside object property for perform more functionality when object has been called
+            return `I love the ${this.name} Located in ${this.locs} and the Package Price is ${this.pack_price} Only`; // return string when the object function is called
+        }
+    }
+    const prop = { // declare an objects with its property
+        name: "Kheerganga",
+        locs: "Parvati Valley, Himachal",
+        price: 12999+"/-"
+    };
+    const props = { // declare an objects with its property
+        name: "Leh-Ladakh",
+        locs: "Ladakh (UT, J&K), India ",
+        allowed:()=>{ return "In Summers Only, In Winter its Off.";} // added a new arrow function inside the object property
+    };
+    let result = _.create(trek, props)
+    let single = _.functions(props);
+    let multi = _.functionsIn(result);
+    console.log(single); // output => [ 'allowed' ];
+    console.log(multi); // output => [ 'allowed', 'extra'];
+
+
+}
+
