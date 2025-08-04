@@ -26,7 +26,7 @@ const _ = require('underscore'); // connect with underscore Library
 
     let arr1 = ['apple', 'mango', 'oranges', 'grapes']; // define an Array with some values
     let arr2 = [1, 2, 6, 3, 4, 8, 12]; // define an Array with some values
-    const fruits = new Map([["apple" , 500], ["mango", 700], ["orange", 300], ["grapes", 600]]); // declare a new variable with Map Object have multiple pair values 
+    const fruits = new Map([["apple" , 500], ["mango", 700], ["orange", 300], ["grapes", 600]]); // define a new variable with Map Object have multiple pair values 
     
     let list = _.map(Array.from(fruits),([key, value]) => { // define map method for destructure map object that contain multiple pair of arrays, destructure each array pair and then apply a call back function for extract the each key and value form the array pair 
         return `${key} is ${value} KG`;     // return the extracted value from the array according to your required Structure. 
@@ -629,11 +629,11 @@ const _ = require('underscore'); // connect with underscore Library
 
 { // _.compose(...functions) => This method is used to create a chain of functions, controlling the order in which they are called, where the output of one function is passed as the input to the next.
 
-    const f1 = (x) => {return (x + 1);}; // declare a variable with arrow function 
-    const f2 = (x) => {return (x - 2);}; // declare a variable with arrow function 
-    const f3 = (x) => {return (x / 3);}; // declare a variable with arrow function 
-    const f4 = (x) => {return (x * 4);}; // declare a variable with arrow function 
-    const f5 = (x) => {return (x * x);}; // declare a variable with arrow function 
+    const f1 = (x) => {return (x + 1);}; // define a variable with arrow function 
+    const f2 = (x) => {return (x - 2);}; // define a variable with arrow function 
+    const f3 = (x) => {return (x / 3);}; // define a variable with arrow function 
+    const f4 = (x) => {return (x * 4);}; // define a variable with arrow function 
+    const f5 = (x) => {return (x * x);}; // define a variable with arrow function 
     let controls = _.compose(f5,f4, f1, f2, f3) // The compose function is used to create a chain of multiple functions, where the return value of one function becomes the argument of the next function, allowing control over the order in which the functions are executed.
     console.log(controls(15));  // output => 256 => 15 / 3 = 5 - 2 = 3 + 1 = 4 * 4 = 16 * 16 = 256 
 }

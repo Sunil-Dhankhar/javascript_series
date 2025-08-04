@@ -35,7 +35,7 @@ const _ = require('underscore','lodash'); // connect with underscore Library
 
 { // _.invert(object) — This method is used to swap the keys and values of an object. That means the key becomes the value, and the value becomes the key. They both exchange their positions with each other.
     // return a new object with interchanged value.
-    const student = { rohit: "name", 12345:"rollno", Mcom:"stream"} // declare a new variable with object and its property
+    const student = { rohit: "name", 12345:"rollno", Mcom:"stream"} // define a new variable with object and its property
     let result = _.invert(student);// invert method swap its given object properties with each other means keys become values and values become keys
     console.log(result) // output => { rollno: '12345', name: 'rohit', stream: 'Mcom' }
     // here you Notice that we define numaric key with value rollno is on 2nd position but now its on 1st position after swap. behind the scene, javascript sort the order if it found the numaric key,
@@ -45,20 +45,20 @@ const _ = require('underscore','lodash'); // connect with underscore Library
 }
 
 { // _.create(prototype, props) — This method is used to create a new object with the prototype of an existing object or function. It helps in inheriting properties from that prototype. You can also add new properties to the created object using the props parameter.
-    const trek = { // declare an objects with its property
+    const trek = { // define an objects with its property
         name : "Spity vally", // properties of main object 
         locs : "Himachal Pardesh, India" ,
         pack_price:14999+"/-",
-        extra : function (){ // declare a function inside object property for perform more functionality when object has been called
+        extra : function (){ // define a function inside object property for perform more functionality when object has been called
             return `I love the ${this.name} Located in ${this.locs} and the Package Price is ${this.pack_price} Only`; // return string when the object function is called
         }
     }
-    const prop = { // declare an objects with its property
+    const prop = { // define an objects with its property
         name: "Kheerganga",
         locs: "Parvati Valley, Himachal",
         price: 12999+"/-"
     };
-    const props = { // declare an objects with its property
+    const props = { // define an objects with its property
         name: "Leh-Ladakh",
         locs: "Ladakh (UT, J&K), India ",
         allowed:()=>{ return "In Summers Only, In Winter its Off.";} // added a new arrow function inside the object property
@@ -79,20 +79,20 @@ const _ = require('underscore','lodash'); // connect with underscore Library
 }
 
 { // _.functions(object) => this method is used to get all function name from the object. means it returns all methods name from a perticuler object. this method returns only owns method not parent or inherit function property or name.
-    const trek = { // declare an objects with its property
+    const trek = { // define an objects with its property
         name : "Spity vally", // properties of main object 
         locs : "Himachal Pardesh, India" ,
         pack_price:14999+"/-",
-        extra : function (){ // declare a function inside object property for perform more functionality when object has been called
+        extra : function (){ // define a function inside object property for perform more functionality when object has been called
             return `I love the ${this.name} Located in ${this.locs} and the Package Price is ${this.pack_price} Only`; // return string when the object function is called
         }
     }
-    const prop = { // declare an objects with its property
+    const prop = { // define an objects with its property
         name: "Kheerganga",
         locs: "Parvati Valley, Himachal",
         price: 12999+"/-"
     };
-    const props = { // declare an objects with its property
+    const props = { // define an objects with its property
         name: "Leh-Ladakh",
         locs: "Ladakh (UT, J&K), India ",
         allowed:()=>{ return "In Summers Only, In Winter its Off.";} // added a new arrow function inside the object property
@@ -108,7 +108,7 @@ const _ = require('underscore','lodash'); // connect with underscore Library
     // in underscore library no one method to grab inherit object function name properties for access easily,
     //  so we have define a method to get all inherit object method name along with child object methods name.
     function pro(obj){ // define a function
-        let result = []; // declare a varibale as an empty array
+        let result = []; // define a varibale as an empty array
         for(let key in obj) // start for in loop where we create an instance of object
         {
             if(typeof obj[key] === "function" ) //condition where check the object key type is a function if yes or condition true then execute the internal script 
@@ -125,7 +125,7 @@ const _ = require('underscore','lodash'); // connect with underscore Library
 
 { // _.findKey(object, predictor(function), [context (optional)]) => this method used to find the key from the object that satiesfy the given condtion, if condition is true then search stops and it return the key from the object or if condition not satisfy by any key from the object then it return 'undefined'
 
-    const data = { // declare a variable as object
+    const data = { // define a variable as object
         user1: { age: 25 }, // define a object property as new object
         bike: { price: 75000 + "/-" },// define a object property as new object
         car: { model: "BMW", name: 'X3' },// define a object property as new object
@@ -180,15 +180,15 @@ const _ = require('underscore','lodash'); // connect with underscore Library
 }
 
 { // _.extendOwn(destination, ...sources) is used to copy only the own (non-inherited) properties from one or more source objects to the destination object. It ignores properties inherited through the prototype chain.
-    let car = { brand : "Audi", // declare a new variable as an object have some own properties.
+    let car = { brand : "Audi", // define a new variable as an object have some own properties.
                     model: "A4x",
                     Fuel_type:"Diesel",
-                    info : ()=>{ // declarea call back function inside object properties
+                    info : ()=>{ // definea call back function inside object properties
                         return `${this.brand} + ${this.model}`; // return this object properties values like brand or model.
                     }
     }
 
-    let car_info = { category:"SUV", //declare a new object with some own properties called as object properties
+    let car_info = { category:"SUV", //define a new object with some own properties called as object properties
                     seater : 7,
                     engin : "4 stroke",
                     made_in : "Japan"
@@ -244,6 +244,247 @@ const _ = require('underscore','lodash'); // connect with underscore Library
 
 }
 
-{  // _.pick(object, *keys) 
+{  // _.pick(object, *keys) => this method is used to get specified keys properties from the object and return this properties and values into a new object. 
+   // this method is works only on objects own properties, if the object have nesting objects or array then it return the nested object outer level refernce as a shallow copy.
+   // this method not works on arrays, strings or any other type of data, or niehther  works on inherited objects or prototype properties of objects.
 
+let car =       {   model:"BMW x3", // define a variable as an object 
+                    color:"Red",
+                    wheel_base :"21 inch",
+                    keyless : "yes",
+                    turbo: "yes",
+                    infortainment:"Bose",
+                    price:"3.5 Cr. Interoducing Price.",
+                    varient: "xtream(mid-base)",
+                    car_spec:{  brand : "Audi",// create a new object as object property in form of nesting (chain of chain)
+                                Fuel_type:"Diesel",
+                                car_info :{ category:"SUV", // create a new object as object property in form of nesting (chain of chain)
+                                            seater : 7,
+                                            engin : "4 stroke",
+                                            made_in : "Japan"
+                                }
+                    }
+                }
+
+    let result ={ ..._.pick(car, "model","price", "varient"), // _.pick method grabing specified properties from the object, for access nested  object properties first of all we required a spred this as a object 
+            // and after that create this all method as object and then apply each internal property of the object as you required with help of object key extention.
+                brand: car.car_spec?.brand, // extend the keys for access the property value from the internal or nested object.
+                Fuel_type: car.car_spec?.Fuel_type,
+                seater: car.car_spec.car_info?.seater,// extend the keys for access the property value from the internal or nested object.
+            };
+    console.log(result); /* output =>{
+                                    model: 'BMW x3',
+                                    price: '3.5 Cr. Interoducing Price.',
+                                    varient: 'xtream(mid-base)',
+                                    brand: 'Audi',
+                                    Fuel_type: 'Diesel',
+                                    seater: 7
+                                    } */
+
+// Here, we are required to extract specific properties from nested objects. 
+// In such cases, we use the spread operator inside an object to fetch the required values.
+// When a property exists at the top level of an object, we can directly access it using the _.pick method. 
+// However, if the property resides inside a nested object, trying to access it directly with _.pick will return 'undefined' or might throw an error.
+// To handle this safely, we use a concept known as "safe access".
+// First, we initialize an object, then use the spread operator before applying the _.pick method.
+// After that, we can extract the necessary properties from the nested object using a chain of keys representing each level,
+// for example: car.car_spec.car_info.seater
+// Each key here represents a level of nesting in the object structure.
+
+}
+
+{  //  _.omit(object, *keys) => this method is opposite of pick method, this remove the specified keys and values from the object and returns the all object without specified keys in to new array
+   let car =       {   model:"BMW x3", // define a variable as an object 
+                    color:"Red",
+                    wheel_base :"21 inch",
+                    keyless : "yes",
+                    turbo: "yes",
+                    infortainment:"Bose",
+                    price:"3.5 Cr. Interoducing Price.",
+                    varient: "xtream(mid-base)",
+                    car_spec:{  brand : "Audi",// create a new object as object property in form of nesting (chain of chain)
+                                Fuel_type:"Diesel",
+                                car_info :{ category:"SUV", // create a new object as object property in form of nesting (chain of chain)
+                                            seater : 7,
+                                            engin : "4 stroke",
+                                            made_in : "Japan"
+                                }
+                    }
+                }
+        let result = { ..._.omit(car, 'turbo', 'keyless','infortainment'), 
+            car_spec: { ..._.omit(car.car_spec, "Fuel_type"),
+                      car_info: { ..._.omit(car.car_spec.car_info, "seater"),
+                    }     
+            }
+        };
+        console.log(result);
+    /*output => {
+                    model: 'BMW x3',
+                    color: 'Red',
+                    wheel_base: '21 inch',
+                    price: '3.5 Cr. Interoducing Price.',
+                    varient: 'xtream(mid-base)',
+                    car_spec: {
+                        brand: 'Audi',
+                        car_info: { category: 'SUV', engin: '4 stroke', made_in: 'Japan' }
+                    }
+                    } */
+    // The omit method is oposite of pick method, this remove specified keys from the object and returns remaining objects properties into a new object,
+    // but this have a condition, this support only top level object properties and work on only top level object properties, when you trying to remove 
+    // nested object properties with help of keys, this ignore it. so if you want to remove nested object keys then you have only ony way  
+    // to remove the properties with help of omit method is that you want to apply omit method on each object as a nested object in form of manully with help of ... spread operator.
+    // and then mention the each specified object keys for remove it from the object. like as above mention example.
+    
+}
+
+{ // _.defaults(object, *defaults) => the _.defaults method is used to set default values that place or properties in object that are undefined or missing. if value id defined then it not change the value.
+    
+    let food = {  name:"Burger", type:undefined, price:undefined  }
+    let optional = { name:"chicken Burger", type:'continentel', price:"150 Rs/- only", category:"non-veg"}
+    let result = _.defaults(food, optional )
+
+    console.log(result);  /* output :=> {
+                    name: 'Burger',
+                    type: 'continentel',
+                    price: '150 Rs/- only',
+                    category: 'non-veg'
+                    }*/
+// In this example, you can see that the default method replaces only those properties whose values are 'undefined'.
+// If a property is already defined — even if the value is NaN, an empty string (""), 0, or any other value — this method will ignore it.
+// It strictly works only with properties that are explicitly 'undefined'.
+// For example, if the 'name' property is already defined as 'burger', this method will skip it and check the next property.
+// If it finds a property with value 'undefined', like 'type', then it will replace that with the new value, say 'continental'.
+// It continues this process for the remaining properties.
+// Also, if you provide a key in the default object that doesn't exist in the original object, it will add that as a new property to the object.
+// Finally, it returns the updated object with all undefined properties filled in, and all existing values preserved.
+
+}
+
+{  // _.clone(object_name) => this method is used to create a shallow copy of object or array into new object, that means this create a top level copy of the object and if this is nested then nested part is copyied as refernce not fully copied.
+    let car = { // define a new variable as an object
+        model: "BMW",
+        color: "Red",
+        spec: { // nested object
+            engine: "V8"
+        }
+    };
+   
+    let cloneCar = _.clone(car); // clone mathod is used to create a shallow copy of main object and this is also create a refernce of nested object or array. and return into a new object.
+    cloneCar.color = "Black"; // apply make changes into the clone object in top level
+    cloneCar.spec.engine = "V9"; // apply make changes into clone and original object because the clone part of object is interlinkend with original via refference.
+                                //  when the clone method is applying on main object then it cloned top level all properties as call by values, but when turn is nested object then it copy its reffernce not values, this is called as call by reference.
+    console.log(car); // output => { model: 'BMW', color: 'Red', spec: { engine: 'V9' } }
+    console.log(cloneCar); // output => { model: 'BMW', color: 'Black', spec: { engine: 'V9' } }
+
+        // In this example, you can observe the difference in behaviour when modifying a cloned object using _.clone.
+        // When we make changes to the top-level properties of the cloned object, the changes are applied only to the clone.
+        // The original object (car) remains unchanged, just like before — which means top-level cloning works as expected.
+        // However, when we modify a nested property within the cloned object, the changes are also reflected in the original object.
+        // This happens because the _.clone method performs a **shallow copy**, not a deep copy.
+        // In shallow cloning, the top-level properties are copied, but nested objects are not cloned — instead, only their **reference** is copied.
+        // So both the original and cloned objects share the same nested object in memory.
+        // As a result, any changes to the nested part in the clone will directly affect the original object as well.
+        // Primitive types (string, number, boolean, null, undefined, symbol, bigint) are copied by value
+        // Objects, arrays, and functions are copied by reference in shallow copy.
+
+}
+
+{   // _.tap(object, interceptorFunction) => This method is used to create a workflow in a method chaining sequence. It allows you to perform operations or side effects on the original object without breaking the chain.
+    // The main advantage of _.tap is that it passes the object to the provided function (interceptor), performs any required modifications or logging inside it, and then returns the original object back into the chain.
+    // This is especially useful in large-scale projects where you want to apply changes or debug the main object during method chaining, while still continuing the chain smoothly without interruption.
+
+        // Create a basic object representing a food item
+        let fastfood = {
+            name: 'Burger',
+            type: 'continental',
+            price: '150 Rs/- only',
+            category: 'non-veg'
+        };
+
+        // Updating the object directly using standard JavaScript (no chaining used here)
+        fastfood.category = "veg"; 
+        console.log(fastfood); 
+        /*  
+            Output:
+            {
+                name: 'Burger',
+                type: 'continental',
+                price: '150 Rs/- only',
+                category: 'veg'
+            }
+
+            // This is a simple way to update object properties when changes are minimal.
+            // No chaining or functional methods are used here.
+        */
+
+        // Now using underscore's chaining and tap for controlled object modification
+        let result = _.chain(fastfood) // Start chaining using underscore
+            .extend({ category: "VEG and NON-VEG" }) // Modifies the object using 'extend'
+            .tap(obj => {
+                // 'tap' allows us to inspect or modify the object mid-chain without breaking the flow
+                console.log("Inside the Chain:", obj);
+            })
+            .value(); // Ends the chain and returns the final object
+
+        /*  
+            Output in Console:
+            Inside the Chain: {
+                name: 'Burger',
+                type: 'continental',
+                price: '150 Rs/- only',
+                category: 'VEG and NON-VEG'
+            }
+
+            // In this example:
+            // - 'extend' is used to update the category property
+            // - 'tap' is used for logging/debugging without interrupting the chain
+            // - '.value()' is necessary to extract the final result from the chain wrapper
+        */
+}
+
+{ // _.toPath => this method is belongs to Lodashlibrary of javascript not to underscore,  and this methed basically used to return the path of array value or object value in a form of string, then it convert it as array values then we pass this to reduce function and afterthat to arrow function for grab the value from object
+    // this method is basically is used to get value from the multilevel object or nested object if we have a path of object value as a string. 
+   // so this method is not a part of the underscore library so for this type of work we create a custom function for change the address  from string to array .when we got the array then we apply further script to access th object value from nested objects.
+    function toPath(vals)  // initilize a new function 
+    {
+          return vals.replace(/\[(\w+)\]/g, '.$1').split('.');
+        // This regex converts square bracket notation (like [key]) into dot notation (.key).
+        // After replacing, it splits the resulting string by dots into an array of keys.
+        // For example, "car[car_spec][car_info]" becomes "car.car_spec.car_info" and then splits into ["car", "car_spec", "car_info"].
+
+    }
+    let car = { // define a new variable as an object
+                model: "BMW",
+                spec: { // nested object
+                    engine: "V8",
+                    color: "Black"
+                }
+            };
+    let arras = "spec.color"; // object value path as a string.
+    let rest = toPath(arras); // call the custom created function via pass the string value and that function return after convert this string in array.
+    let result = rest.reduce((obj, keys) => { //execute the reduce function of underscore library and then run a call back function have value obj and keys that is return the value after match from the object.
+            return obj && obj[keys] // return the value after the condition satiesfy
+    },car);
+    console.log(result);//print the output according to condition this time output is // Black.
+}
+
+{  // _.has(object, key) => This method checks whether the given key exists as an own property of the object.
+    // If the key is found directly on the object (not inherited from prototype), it returns true.
+    // Otherwise, it returns false.
+    // this method is also chek only top level properties if the specified key is property of nestied object then it returns false
+
+     let car = { // define a new variable as an object
+                model: "BMW",
+                spec: { // nested object
+                    engine: "V8",
+                    color: "Black"
+                }
+            };
+    console.log(_.has(car, "model")) // true
+    console.log(_.has(car, "price")) // false
+    console.log(_.has(car, "spec.engine")) // false
+    console.log(_.has(car, "spec.color")) // false
+
+    // in these example you see that the model property exist then it returns true, price key not  exist return false and nested properties are not supported by this function or method so 
+    // while you checking the  nested object property then it returns false
 }

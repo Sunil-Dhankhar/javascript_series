@@ -85,3 +85,23 @@ const _ = require('lodash', 'underscore');
 
 }
 
+{ // _.toPath(string path) => this method is used to convert the path of object value from string to array value. this method is used in mainly nested objects for access the object value easily.
+    let car = { //define the new variable as an object
+                model: "BMW",
+                spec: { // define new object or nested object
+                    engine: "V8",
+                    color: "Black"
+                }
+            };
+    let arras = "spec.color"; //path of object value as a string
+    let rest = _.toPath(arras); // output => ["spec", "color"] // converted path as array value
+    let result = rest.reduce((obj, keys) => { // reduce function is here reducing the multiple value into a single value and then after return the single value.
+            return obj && obj[keys]// return the value after match the value. with condition
+    },car); // from object // object name
+    console.log(result); //print the returned back result as output.
+}
+
+
+
+
+
