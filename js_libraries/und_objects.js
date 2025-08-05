@@ -1,4 +1,5 @@
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++  //
+const { JSDOM } = require('jsdom');
 const _ = require('underscore','lodash'); // connect with underscore Library
 
 //  Object Functions //
@@ -486,5 +487,201 @@ let car =       {   model:"BMW x3", // define a variable as an object
     console.log(_.has(car, "spec.color")) // false
 
     // in these example you see that the model property exist then it returns true, price key not  exist return false and nested properties are not supported by this function or method so 
-    // while you checking the  nested object property then it returns false
+    // while you checking the  nested object property then it returns false.
 }
+
+{   //  _.property(path) => this method is used to access object property directly from the object, basically this method is take one argument and return a function.
+    //                      this method support only top level properties of an object..if you provide a nested address then this find undefined result.
+
+    const user = { // define a new variable as an object
+                    id: 1,
+                    first: 'Amit',
+                    last: 'Verma',
+                    address: { //nested object
+                                city: 'Delhi'
+                        }
+                };
+
+        let getProp = _.property("last"); // this method grab value with this key property, this method return a function for get value related with this argumented key.
+        let getProps = _.property("address.city");// this method grab value with this key property, this method return a function for get value related with this argumented key.
+        let getResult = getProp(user);//get value from the object from the retuned function via pass the object name. that means this is object and from this object grab key value property. 
+        let getResults = getProps(user);//get value from the object from the retuned function via pass the object name. that means this is object and from this object grab key value property. 
+
+        console.log(getResult); // verma 
+        console.log(getResults); // undefined 
+
+        // here in these both examples you see that when i pass top level key property to _.property method then this support and grabbing the value as expected result
+        // but when we pass the arguments as nested object key path then it could'nt support and return a value name 'undefined'.
+        // so here in both examples result proove that the _.property method just support single level or top level object property, not to be support nested objects properties.
+}
+
+{   // _.propertyOf(object) => the propertyOf method working style similar to property method, but the work with differnt workflow where the property take first path of the key value from the object and return the function.
+    // there the propertyof method take first object and after return the function that function process path from the object. 
+    // property => key value path first => there after object 
+    // propertyOf =>  object first => there after key value path 
+    // like property method this method also not support nested level object properties. this support to only top level object properties.
+    
+    const user = { // define a new variable as an object
+                    id: 1,
+                    first: 'Amit',
+                    last: 'Verma',
+                    address: { //nested object
+                                city: 'Delhi'
+                        }
+                };
+
+   let getfun  = _.propertyOf(user);
+   console.log(getfun("first")) // Amit
+   console.log(getfun("address")) // {city : 'Delhi'}
+   console.log(getfun("address.city")) // undefined
+
+        // here in these both examples you see that when i pass top level key property to _.propertyOf method then this support and grabbing the value as expected result
+        // but when we pass the arguments as nested object key path then it could'nt support and return a value name 'undefined'.
+        // so here in both examples result proove that the _.propertyOf method just support single level or top level object property, not to be support nested objects properties.
+}
+
+{   // _.matcher(attrs) → This method is used to verify that both the key and its corresponding value exist in the given object.
+    // It returns a function that, when executed with an object, checks if the object contains all the specified key-value pairs.
+    // If multiple key-value pairs are passed, then each key must exist and its value must exactly match.
+    // If even a single key is missing or its value doesn't match, the function will return false — regardless of how many others match.
+
+    let fastfood = {
+            name: 'Burger',
+            type: 'continental',
+            price: '150 Rs/- only',
+            category: 'non-veg'
+        };
+    const matchFn = _.matcher({ name: 'Burger', category:'non-veg' });// matcher function is used to verify that key and value both are exist and match or not if match it returns true else false 
+    const match = _.matcher({ name: 'Burger', category:'veg' });// matcher function is used to verify that key and value both are exist and match or not if match it returns true else false
+    console.log(matchFn(fastfood)); // output => true // pass object to return function. in this condition all key value matched. so output returns as true.
+    console.log(match(fastfood));// output => false  // pass object to return function. in this condition all key value not matched. so output returns as false.
+    
+    // in both example you have noticed that in first example you see both keys and values are matched with object keys and values so it provide a result as true. but when you see second example then it returns false,
+    // because in second example you see that the second key pair value is not exist in object so thats  doesnt matter first pair matched if you pass multiple pairs then each pair should be match.if not then output will recieve as negtive. 
+}
+
+// _.isEqual(object, other) => this method is used to compare only two objects deeply like nested objects, and ensure that the each value and key is matched or not if each key value is same in both objects then it returns true else returns false.  
+
+{ // _.isMatch(object, properties) => this is working like _.matcher method..like match key and values both are exist or matches from the objects.
+  // the main difference between both method is that the isMatch method is provide direct boolean value true or false and the matcher returns a function for use multiple time with differnt - 2 objects. this make this reusable. 
+  
+        let fastfood = { // define the new variable as object
+            name: 'Burger',
+            type: 'continental',
+            price: '150 Rs/- only',
+            category: { // nested object
+                    food_type:'non-veg',
+                    in_offer:'chicken-popcorns'
+            }
+        };
+
+        let result = _.isMatch(fastfood, {name:'Burger', type:'continental'}); // with isMatch method we verify that the provided properties are matching in given objects or not
+        let results = _.isMatch(fastfood, {name:'Burger', category:{food_type:'non-veg'}}); // with isMatch method we verify that the provided properties are matching in given objects or not
+
+        console.log(result) // true // top level or shallow level
+        console.log(results) // false // nested level or deep level.
+
+    // in both example you have Noticed that in first example you see both keys and values are matched with object keys and values so it provide a result as true. but when you see second example then it returns false,
+    // because in second example you see that the second key pair value is exist in object but in nested object so thats doesnt matter first pair matched or not, the mstter here is that the isMatch  not support the nested object and second properties belongs to nested object so we got output here as negtive or false. 
+
+}
+
+// _.isEmpty(collection) => this method is used to check that the colloection is empty or not, if the collection of array, object, string etc. is empty then it return true else return as false. 
+// for example => true condition =>     _.isEmpty([]);  //  _.isEmpty('');  // _.isEmpty({});  // _.isEmpty(null);  // _.isEmpty(undefined);   // _.isEmpty(12);
+// for example => false condition =>     _.isEmpty([1,2,3]);  //  _.isEmpty('hello');  // _.isEmpty({a:1}); 
+//   _.isEmpty(5); => true // this is true because the isEmpty Method check string, array, objects only and if this got a number then it assume / treat it as empty value so technically this got output as true.   
+
+
+// Create a virtual DOM
+const dom = new JSDOM(`<!DOCTYPE html><body><div id="mydiv"></div></body>`); // the Node Environment does'nt support Dom model so we create here a fake Dom object for testing purpose
+const document = dom.window.document; // // Access the fake DOM's document
+
+{   // _.isElement(object) => this method is used to check that provide object is a DOM Object or not, if its a Dom object then return true else return false.
+    
+    // const div = document.createElement('div'); this script not working due to node Environment.
+    
+    const div = document.getElementById('mydiv');
+
+    console.log(_.isElement(div));              // true (its a DOM object)
+    console.log(_.isElement({}));               // false (its not a DOM object)
+    console.log(_.isElement(null));             // false (its not a DOM object)
+    console.log(_.isElement(document.body));    // true (its a DOM object)
+    console.log(_.isElement('<div></div>'));    // false  (its a string value, not an element)
+}
+
+{ // _.isArray(object) => this method is used to check that the provided object is an Array or not if this is array then return true or if not then returns false.
+    console.log("\n",_.isArray([]));        // true  (This is an Array)
+    console.log(_.isArray([1,2,3]));        // true  (This is an Array)
+    console.log(_.isArray("hello"));        // false (This is string)
+    console.log(_.isArray({a:1}));          // false (This is an object)
+    console.log(_.isArray(true));           // false (This is an Boolearn value)
+    console.log(_.isArray(126));            // false (This is a Number)
+    console.log(_.isArray(undefined));      // false (This is an undefined property)
+    console.log(_.isArray(null));           // false (This is Null Property)
+    console.log(_.isArray(new Array(5)));   // true  (This is an Array)
+}
+
+{  // _.isObject(value)=> this method is used to check that the provided object is an Object or not if this is object then return true or if not then returns false.
+
+    console.log("\n",_.isObject({a:1}));        // true (This is an object)
+    console.log(_.isObject({}));                // true (This is an object)
+    console.log(_.isObject(new Date()));        // true (This is an object)
+    console.log(_.isObject([]));                // true (This is an object)
+    console.log(_.isObject([1,2,3]));           // true (This is an object)
+    console.log(_.isObject("hello"));           // false (This is a string)
+    console.log(_.isObject(null));              // false (This is Null property)
+    console.log(_.isObject(undefined));         // false (This is an Undefined property)
+}
+
+{  // _.isArguments(object) => this method is used to check that the provided object is an argument object or not if this is argument object then return true or if not then returns false.
+   // This is also check that argument object is placed in function inside or function outside.
+   
+   console.log("\n",_.isArguments([1, 2, 3]));  // false because this an Array not argument
+
+   function cars_count() // initilize a new function
+   {
+        console.log(_.isArguments(arguments)); // true because the function hold a special arguents.
+        console.log(arguments); //output => [Arguments] { '0': 1, '1': 2, '2': 3 }
+   }
+
+   cars_count(1,2,3)//call the function with pass the arguments
+ // in javascript the function arguments object is only one of the object that support isArguments method..other arguments are type of inputs.so all are get false as result but the arguments object return true value.  
+}
+
+{ // _.isFunction(object) => this method is used to check that the provided value is a javascript function or not if this is a function then it return the result as true else false.
+    function demo() { console.log("hello")} 
+
+    console.log("\n",_.isFunction(demo));            // true // here just checking that demo is function or not, not calling to demo function.
+    console.log(_.isFunction(function() {}));        // true //checking this is a function or not
+    console.log(_.isFunction(() => {}));             // true // this is a short version of function that known as arrow function
+    console.log(_.isFunction(Math.max));             // true (built-in function)
+    console.log(_.isFunction(123));                  // false // this is a Number
+    console.log(_.isFunction("hello"));              // false // this is a String
+    console.log(_.isFunction({}));                   // false // this is empty object
+    console.log(_.isFunction(null));                 // false // this is null property
+    console.log(_.isFunction(undefined));            // false // this is undefined property
+
+}
+
+{ 
+    // _.isString(object)  => this method is used to check that the given object is string type data or not, if its string then return true else return false
+    // _.isNumber(object)  => this method is used to check that the given object is Number type data or not, if its number then return true else return false
+    // _.isBoolean(object) => this method is used to check that the given object is boolean type data or not, if boolean value then return true else return false
+    // _.isFinite(object)  => this method is used to check that the given value is a finite number (countable numbers) or not, if this is finite number then return true else return false
+    // _.isDate(object)    => this method is used to check that the given object is Date type data or not, if its date type then return true else return false
+    // _.isRegExp(object)  => this method is used to check that the given object is Regexp value or not, if its Regexp value then return true else return false
+    // _.isError(object)   => this method is used to check that the given object is Error object or not, if its Error Object then return true else return false
+    // _.isSymbol(object)  => this method is used to check that the given object is Symbol Value or not, if its Symbol value then return true else return false
+    // _.isMap(object)     => this method is used to check that the given object is Map object or not , if its a Map Object then return true else return false
+    // _.isSet(object)     => this method is used to check that the given object is Set object or not, if its a Set object then return true else return false  
+    // _.isNaN(object)     => this method is used to check thar the given object is NAN (Not A Number) value or not if its NAN value then return true else return false
+    // _.isNull(object)    => this method is used to check thar the given object is Null value or not if its Null value then return true else return false
+    // _.isUndefined(value)=> this method is used to check thar the given value is undefined value or not if its Undefined value then return true else return false 
+
+    let nums;
+    console.log("\n",_.isUndefined(nums)) // true // because this variable is just declared not defined so this is undefined now so we got return value as true.
+}
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++  //
+
+//   Utility Functions

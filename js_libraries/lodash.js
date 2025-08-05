@@ -102,6 +102,24 @@ const _ = require('lodash', 'underscore');
 }
 
 
+{
+    const user = {
+                    id: 1,
+                    profile: {
+                        name: {
+                                first: 'Amit',
+                                last: 'Verma'
+                        },
+                        address: {
+                                   city: 'Delhi'
+                        }
+                    }
+                };
 
+        let getProp = _.property("profile.name.last");
+        let getResult = getProp(user);
+
+        console.log(getResult);
+}
 
 
