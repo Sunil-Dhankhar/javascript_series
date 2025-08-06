@@ -686,7 +686,8 @@ const document = dom.window.document; // // Access the fake DOM's document
 
 //   Utility Functions
 
-// _.noConflict() => this method is used to remove conflict from the script when you use two or more libraries on same page with single operator 
+// _.noConflict() => 
+//                  this method is used to remove conflict from the script when you use two or more libraries on same page with single operator 
 //                   In here i am using underscore library with operator _. and if i want to use Lodash library with _. this operator then the various methods are conflicting with both libraries and override each other
 //                   so this method is here very useful becose this method left the _. operator for previous library and used with a new variable name and you can access each method of this library with this name.
 //      for Example => suppose i am using the underscore library, and i have required some methods of Lodash library so we can
@@ -694,3 +695,188 @@ const document = dom.window.document; // // Access the fake DOM's document
 //          let lodash = _.noConflict();
 //                    Now the _. operator works with only underscore and you can access all lodash library function with lodash.map etc. 
 //     All conflicts are Removed 
+
+
+// _.identity(value) =>     
+//                   this method is simple but usefull tool or method that return same value that it have received , suppose it resceived 5 number then it returned value 5 without any modification.
+//                   this method is use that time when you have required return value same as passed value without any changes then you use this method.
+//           for example => 
+                         let arr = [1, 2, 3];
+                         let result = _.map(arr, _.identity); 
+                         console.log(result);//output => [1, 2, 3]
+
+
+// _.constant(value) =>
+//                      this method work as per its name. constant means nothing is changed when its defined at first time, after that you can't change this. each and every time the value is same as defined first time,
+//                      this method is a powerful tool of underscore library, this is used when you want to fix a value and reserve a value for everytime that couldn't change.
+//                      this method returns a function and then this function return a same value that you have set it in first time, 
+//                      Not matter how many time you pass the new value when you call this function, output result will be same as defult set value.
+//          For Example :=>  
+                let fun = _.constant(5);
+                console.log(fun(35)); // output is 5
+                console.log(fun("hello")); // output is still 5  
+                console.log(fun({a:1,b:10})); // output is still 5  
+//  in simple terms we can say that this method lock or reserve the value. and you can use this return function multiple time when you required.
+
+
+// _.noop() => this method is also a power tool of underscore library, this is known as Noop = 'No - Operation', means that function that do nothing  and nothing return,
+//              this is a blank and empty function, that is used sometime where there is mendetory to call a function, but you have not required so you can use this noop method there for countinuty in script.
+//              this is readable and sensble, that a good developer understand that this is empty function.
+//              this method also use to reduce duplicacy of empty function when tou use multiple time like function (){} or () =>{}, then the duplicacy chances very high,
+//              so you can use this method that each time unique and freah that reduce the chance of duplicacy. and this is also reusable
+//   for example => let nop = _.noop();
+                function doSomething(callback = _.noop) { //inintialize the new function and  set a reference of noop method or function into a new variable
+                    callback(); // safe to call even if nothing is passed
+                }
+
+                doSomething();          // no error, because _.noop is used
+                doSomething(() => { // new callback arrow function is initilized here and then after called the function
+                console.log("Message Prints Done!"); // print the string after calling the function
+                });                     //Output => prints "Message Prints Done!"
+// This method is useful when your code requires a function to be executed,
+// but you don't actually want to run any logic. In such cases, _.noop ensures safe execution.
+
+
+//_.times(n, iteratee, [context]) =>
+//                  This is one of the more practical and powerful Underscore.js methods, that is used to provide a provision to run a function n time.
+//                  its working style like a loop that execute a iteratee function, number of n time.
+//              for Example =>
+            console.log(_.times(5, (vars) => { // this method used to run the call back function till provide time
+                return "Happy Independence Day "+ vars;  // print the received value. // "Happy Independence Day 0-4"indexing (5 times)
+            }));
+
+
+// _.random(min, max) =>
+//                        this method is also powerfull tool of js liberary that provide a random number between the min value and max value.
+//                        this method is used in while you creating a game script, quizz or puzzel, etc. script
+//                  For Example =>
+            console.log(_.random(1,20)); // output => this return random number between min(1) and max(20) value like 16, 18, 5,7 etc each time when call this method
+            console.log(_.random(150)); // output  => this return random number between here 0 to 150 like 47,88,126,5,90 etc each time random number when this method is applied , here 150 is max number and the 0 is min if you not provide min value then its by default is 0
+
+
+// _.mixin(object) =>
+//                      this method is another powerfull tool of js library that provide a provision to create or add your custom function to underscore or lodash library and then after you can access you function with _.yourfunctionname();
+//                      this method is used when you required to access your custom function like as underscore or lodash library function.
+//              For Example =>
+                _.mixin({ // this method provide facility to create own custom function as like underscore or lodash library for access easily.
+                    concept/* (function name) */: (value)=> { // callback function
+                        console.log(_.times(5,()=>{return value;})) // script of the function that is placed inside of callback function
+                    }
+                });
+               _.concept("Hello"); // output => [ 'Hello', 'Hello', 'Hello', 'Hello', 'Hello' ]
+
+
+// _.iteratee(value, [context]) =>
+//                              this method is another powerfull method that is used internally in mostly methods
+//                              when you used this method, this Genrate or return a function that hold the output according to your provide value.
+//                              this method behave according to your value and returns the result on base of you value. 
+//                  For Example => Example 1
+                        let rest = _.iteratee((vals)=>{
+                            return vals * vals;
+                        });  
+                        console.log(rest(25)); // 625
+                        
+                        // Example 2
+                        let objs = { name: "India", year: 1947 }
+                        let rusty = _.iteratee(("year"));
+                        console.log(rusty(objs)); // 1947
+
+                        // Example 3
+                        let results = _.iteratee({ name: "India", year: 1947 });
+                        console.log(results(objs)) // true
+                        console.log(results({ name: "James", age:48  })) // false
+
+// here we define 3 different-2 example with same method _.iteratee that behave as per provided value where it performs calculation and somewhere it filter value from received value
+// and Some Where it testing or verify the received value is matched with set value or not.
+
+
+// _.uniqueId([prefix]) =>
+//                        This method is used to genrate a new id for object that could be Dom element or variable or etc.
+//                        when you required a unique variable or element name or Dom ID or Temprary Keys like react keys, data ids etc.
+//                        you can add prefix value and this add a unique id after this value like you have provide a value 'student' then this method add id after this like student_1
+//                        this method add +1 after each application of this method.
+//              for Example : =>
+                    console.log(_.uniqueId()); // 1
+                    console.log(_.uniqueId()); // 2
+                    console.log(_.uniqueId()); // 3
+                    console.log(_.uniqueId("student_")); // student_4
+                    console.log(_.uniqueId("car_")); // car_5
+                    console.log(_.uniqueId("flight_")); // flight_6
+
+//  you see that the each time when i call _.uniqueId method then it increment +1 each time . it doesont matter that you have provided a prefix value or not. if you have provide prefix value then it provide id after the value else direct id.
+
+
+// _.escape(string) =>
+//              This method is security functional method of underscore.js library that provide security against input value if have special characters like &, <, >, ", ' 
+//              if input value have these charcter then this method converts it into &amp; &lt; &gt; &quot; &#x27; and displaying as a simple text, display not a actual value
+
+//              For Example  =>        suppose we have a string like '<script>alert("XSS")</script>' then this line if directly submited then may cause  and we lost access from the site so we use the secure way that if this type of data is received then it converted via this method as a simple text
+
+            let rawData = '<script>alert("XSS")</script>';
+            let conv = _.escape(rawData);
+            console.log(conv); // output => &lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt;
+
+//          in this example you see that the difference that i have provide a string that have special character ander after convert this print like a simple text.
+//          before converting the string represent a script tag with popup alert belongs to javascript, when we convert this tag with escape security method then this method provide a string as a simple text that convert special character into predefined structure.
+
+
+// _.unescape(string) =>
+//              This method is opposite of escape method, where escape encrypt the string special characters, the unescape method is decrypt the encrypted string as like before the encryption.
+//          for Example => this is a basic example for convert the encrypt string in decrypt string as like before.            
+                console.log(_.unescape(conv))// output :=> <script>alert("XSS")</script>
+
+
+// _.result(object, property, [defaultValue]) =>
+//                            this Method is used to extract the value against the provided value from the object, or if the provided value is a function then this call the function and that function return the value, if the value is not exist in the object or method not exist then the default value of the third argument that return default value .
+//                            this method has basically take three arguments first is object (where to search), Second is (which item is find from the object) and third one is optinal(return default value  in case of value is not find in object)
+//                  For Example => 
+    
+                 let student = {name: "sumit", rollno:1285, streame:"B.com", info: function (){ return this.streame;}} // define the variable as object with multiple values 
+                 let rests = _.result(student, "name", "Not Existing");
+                 let ress = _.result(student, "info", "Not Existing");
+                 let resp = _.result(student, "carrer_info", "Not Existing");
+                 console.log(rests); // output => sumit
+                 console.log(ress); // output => B.com
+                 console.log(resp); // output => Not Existing
+
+//  in these both of examples you see that same method changes its  working style that find the values or function from the objects. if the value or function keys not exist in object then this return default value from this method.   
+// in first two example you see one is data key from the object and another one is function key that call the function that is exist in object and that function return the result.
+
+
+// _.now() =>
+//          This Method is used to return the current time in miliseconds. this not return date, its return time only in miliseconds
+//          this is short version of Date.now()
+
+//       For Example =>
+        console.log(_.now()); // output 1754480530979
+        console.log( Date.now()); // output 1754480530979
+
+
+// _.template(templateString, [settings]) =>
+//                              this method is very important method of the underscore.library, this is templating engine of underscore library that is used to create dynamic string or content 
+//                              this is used to inject javascript values inside the HTML or text in samrt way using _.template().
+//                              template string is that string in which you add dynamic placeholder.
+//      Default Delimiters: (<%= … %> Value insert karne ke liye), (<%- … %> HTML-escaped value insert karne ke liye), (<% … %>	JavaScript logic (if, for, etc.))
+
+//      for example => 
+                let tel = _.template("Hello, <%= name %>");
+                let vels = tel({name: "Indra The Tiger"});
+                console.log(vels); // output => Hello, Indra The Tiger
+
+                let sam = _.template("The Alert Pop is : <%- input %>");
+                let val =  sam({input:"<script>alert('XSS')</script>"});
+                console.log(val) // output => The Alert Pop is : &lt;script&gt;alert(&#x27;XSS&#x27;)&lt;/script&gt;
+
+               let vik = _.template(
+                                '<% if (user.isAdmin) { %>' +
+                                    '<p>Welcome, Admin <%= user.name %></p>' +
+                                '<% } else { %>' +
+                                    '<p>Hello, Mr <%= user.name %></p>' +
+                                '<% } %>'
+                            );
+
+            let resty = vik({ user: { name: "Sameer Malhotra", isAdmin: true } });
+            console.log(resty); // output  => <p>Welcome, Admin Sameer Malhotra</p>
+
+            // in both of these example you see that we insert data inside the template dynamicly with help of delimeters
+
