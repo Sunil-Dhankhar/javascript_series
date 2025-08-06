@@ -685,3 +685,12 @@ const document = dom.window.document; // // Access the fake DOM's document
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++  //
 
 //   Utility Functions
+
+// _.noConflict() => this method is used to remove conflict from the script when you use two or more libraries on same page with single operator 
+//                   In here i am using underscore library with operator _. and if i want to use Lodash library with _. this operator then the various methods are conflicting with both libraries and override each other
+//                   so this method is here very useful becose this method left the _. operator for previous library and used with a new variable name and you can access each method of this library with this name.
+//      for Example => suppose i am using the underscore library, and i have required some methods of Lodash library so we can
+//          <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+//          let lodash = _.noConflict();
+//                    Now the _. operator works with only underscore and you can access all lodash library function with lodash.map etc. 
+//     All conflicts are Removed 
