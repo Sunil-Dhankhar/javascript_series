@@ -877,6 +877,43 @@ const document = dom.window.document; // // Access the fake DOM's document
 
             let resty = vik({ user: { name: "Sameer Malhotra", isAdmin: true } });
             console.log(resty); // output  => <p>Welcome, Admin Sameer Malhotra</p>
-
+            
             // in both of these example you see that we insert data inside the template dynamicly with help of delimeters
+ 
+            console.log(_.template("Using 'with': <%= data.answer %>", {variable: 'data'})({answer: 'no'}));
+            // you can also write your code like this where object name is defined as variable and answer is the property of this object ant these values are pass to template method for add the object value dynamicly.
+            
+            console.log(_.VERSION) // output => 1.13.7// this method is for just get information about the library version that which version of the library we are using.
+
+
+// *************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************  //
+
+//              Object-Oriented Style (OOS)
+      
+//      Underscore.js library is support to functional programming and promote this. but when we talk about OOS that means we use underscore methods or functions
+//      in form of objects Like use the Chaining and Method-Style Syntaxes.
+
+//      an example :- without the Chaining or direct application of underscore methods on data types. 
+            
+        console.log(_.map([1, 2, 3], function(n){ return n * 2; })); // output => [2, 4, 6]
+        // in this example you see the map method is directly applied on the provided array.
+
+        // an Another Example:=> with OOS means US function or Methods are apply in form Objects, in simple words first create an object and after that apply methods on this object.
+        let tool = _([1, 2, 3, 4]).map(function(n){ return n * 2; });
+        console.log(tool);// output => [2, 4, 6, 8]
+        // in this example you see that we create an object from an array then after apply a map method on each element of this object with in call back function we apply normal script like return the result of each element after multiplication .
+      
+        // an Another Example :=> when we use multiple methods more then one then this is required to create a chain and then the chain method Wrapped each method into chain and in last the value() method is unwrapped it and get return value from the chain and return this result.
+        // if we use multiple methods on an object without chain then some time output result may be vary or not accurate as expectations.
+        // so its is very useful to use chain method when you use multiple methods on an object. that are execute one by one in chain system. like below mentioned example.  
+        // The Thain method Returns a wrapped object. Calling methods on this object will continue to return wrapped objects until value is called.
+        
+        let tools = _.chain([1, 2, 3, 4]).map(function(n){ return n * 2; }).filter(function(n) { return n > 4; }).value(); // the chain method is keep each method in chain system for perform functionality in form of object
+        console.log(tools); // output => [6, 8]
+
+        // without the value() method. then chain method is uncomplete where the chain method wrapped a object for perform functionality on this object.after all process the returns values or result will also wrapped with in the chain method with object. 
+        // so when you want to extract these results from the chained object then there is no provision to Extract this directly from it,
+        // so here value method perform a major role for extract result based on object and its functionality from the wrapped chained object.
+        // the Value method first unwrapped the chained object then this extract the result from the chained object and after that it returns the result.    
+
 
